@@ -1,8 +1,11 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'uniform.dart';
 import 'day.dart';
+
+final firestoreInstance = FirebaseFirestore.instance;
 
 class Attendance extends StatefulWidget {
   @override
@@ -81,6 +84,7 @@ class _AttendanceState extends State<Attendance> {
                     context,
                     MaterialPageRoute(builder: (context) => Day()),
                   );
+                  add();
                 },
                 child: Text(
                   'save', //submit
@@ -173,4 +177,19 @@ class _AttendanceTileState extends State<AttendanceTile> {
       ),
     );
   }
+}
+
+void add() {
+  var firebaseUser = FirebaseAuth.instance.currentUser;
+  firestoreInstance
+      .collection("student")
+      .doc("4TjdHfCn6aKnlDIBMVMj")
+      .collection("attendance")
+      .doc("firstrecord")
+      .update({
+    "status": "working",
+    "date": FieldValue.serverTimestamp(),
+  }).then((value) {
+    print("success");
+  });
 }
