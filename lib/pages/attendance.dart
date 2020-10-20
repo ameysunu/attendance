@@ -1,5 +1,4 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'uniform.dart';
@@ -87,7 +86,7 @@ class _AttendanceState extends State<Attendance> {
                   //_AttendanceTileState().add();
                 },
                 child: Text(
-                  'save', //submit
+                  'Save', //submit
                   style: TextStyle(fontSize: 20),
                 ),
               ),
