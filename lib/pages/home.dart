@@ -1,4 +1,5 @@
 import 'package:boysbrigade/pages/attendance.dart';
+import 'package:boysbrigade/pages/settings.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -17,6 +18,7 @@ class _HomeState extends State<Home> {
   final List<Widget> _tabs = [
     HalfYear(),
     Day(),
+    Settings(),
   ];
 
   @override
@@ -50,9 +52,13 @@ class _HomeState extends State<Home> {
             icon: Icon(Icons.schedule),
             title: new Text('當天'), //day-to-day
           ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.settings),
+            title: new Text('設定'), //day-to-day
+          ),
         ],
       ),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: Container(
         height: 75.0,
         width: 75.0,

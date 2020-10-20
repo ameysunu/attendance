@@ -21,18 +21,6 @@ class _HalfYearState extends State<HalfYear> {
         ),
         elevation: 0,
         backgroundColor: Colors.blueGrey[50],
-        actions: <Widget>[
-          IconButton(
-            icon: Icon(
-              Icons.settings,
-              color: Colors.indigo[900],
-            ),
-            onPressed: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Settings()));
-            },
-          )
-        ],
       ),
       backgroundColor: Colors.blueGrey[50],
       body: GridView.builder(
