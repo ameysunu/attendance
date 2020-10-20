@@ -1,3 +1,4 @@
+import 'package:boysbrigade/pages/settings.dart';
 import 'package:flutter/material.dart';
 
 class HalfYear extends StatefulWidget {
@@ -27,7 +28,8 @@ class _HalfYearState extends State<HalfYear> {
               color: Colors.indigo[900],
             ),
             onPressed: () {
-              null;
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Settings()));
             },
           )
         ],
