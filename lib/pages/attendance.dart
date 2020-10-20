@@ -84,7 +84,7 @@ class _AttendanceState extends State<Attendance> {
                     context,
                     MaterialPageRoute(builder: (context) => Day()),
                   );
-                  add();
+                  //_AttendanceTileState().add();
                 },
                 child: Text(
                   'save', //submit
@@ -110,6 +110,17 @@ class AttendanceTile extends StatefulWidget {
 
 class _AttendanceTileState extends State<AttendanceTile> {
   List<String> attendance = ['present', 'absent', 'sick'];
+  void add() {
+    FirebaseFirestore.instance
+        .collection("student")
+        .doc(widget.id)
+        .collection("attendance")
+        .add({
+      'date': FieldValue.serverTimestamp(),
+      'studentAttendance': dropdownValue,
+    });
+    print(widget.id);
+  }
 
   String dropdownValue;
   var now = new DateTime.now();
@@ -180,13 +191,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
 }
 
 void add() {
-  var firebaseUser = FirebaseAuth.instance.currentUser;
-  firestoreInstance
-      .collection("student")
-      .doc("4TjdHfCn6aKnlDIBMVMj")
-      .collection("attendance")
-      .doc("firstrecord")
-      .update({
+  firestoreInstance.collection("student").doc().collection("attendance").add({
     "status": "working",
     "date": FieldValue.serverTimestamp(),
   }).then((value) {
