@@ -46,8 +46,6 @@ class _DayState extends State<Day> {
                         name: doc.data()['name'],
                         group: doc.data()['group'],
                         status: doc.data()['status'],
-
-
                       );
                     }).toList(),
                   );
@@ -68,18 +66,18 @@ class StatusBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 25,vertical: 5),
+      margin: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
       child: Card(
         elevation: 10.0,
         child: ListTile(
-          leading: Text(group , style: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 25
-          ),),
-          title: Text(name, style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20
-          ),),
+          leading: Text(
+            group,
+            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+          ),
+          title: Text(
+            name,
+            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+          ),
           trailing: Text(status),
         ),
       ),

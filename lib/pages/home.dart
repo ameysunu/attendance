@@ -14,7 +14,7 @@ class Home extends StatefulWidget {
 class _HomeState extends State<Home> {
   int _selectedTab = 0;
 
-  final tabs = [
+  final List<Widget> _tabs = [
     HalfYear(),
     Day(),
   ];
@@ -25,10 +25,12 @@ class _HomeState extends State<Home> {
     final bool isAuthenticated = user != null;
 
     return Scaffold(
-      body: Center(child: isAuthenticated ? tabs[_selectedTab] : null),
+      body:
+          Center(child: isAuthenticated ? _tabs.elementAt(_selectedTab) : null),
+      // body: _tabs.elementAt(_selectedTab),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _selectedTab,
-        onTap: (int index) {
+        onTap: (index) {
           setState(() {
             _selectedTab = index;
           });
