@@ -29,14 +29,15 @@ class _LoginState extends State<Login> {
     // String userId;
     // getCurrentUser() async {
     //   _firestore
-    //       .collection('students')
-    //       .where("userId", isEqualTo: userId)
+    //       .collection('js')
+    //       .where("userId", isEqualTo: "js@bb78.com")
     //       .snapshots();
 
     //   User user = await FirebaseAuth.instance.currentUser;
     //   setState(() {
     //     userId = user.uid;
     //   });
+    //   print("js handled");
     // }
 
     return Scaffold(
@@ -132,6 +133,7 @@ class _LoginState extends State<Login> {
                         print('Error Happened!!!: $e');
                       }
                     }
+                    //getCurrentUser();
                   },
                 )
               ],
