@@ -38,7 +38,10 @@ class _SettingsState extends State<Settings> {
               },
               child: Text(
                 'Logout', //submit
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(
+                  fontSize: 20,
+                  fontFamily: "OpenSans Regular",
+                ),
               ),
             ),
           ),

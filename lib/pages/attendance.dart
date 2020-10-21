@@ -88,7 +88,10 @@ class _AttendanceState extends State<Attendance> {
                 },
                 child: Text(
                   'Save', //submit
-                  style: TextStyle(fontSize: 20),
+                  style: TextStyle(
+                    fontSize: 20,
+                    fontFamily: "OpenSans Regular",
+                  ),
                 ),
               ),
             ),
@@ -144,6 +147,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
           style: TextStyle(
             fontSize: 25,
             fontWeight: FontWeight.bold,
+            fontFamily: "OpenSans Regular",
           ),
         ),
       ),
@@ -152,10 +156,16 @@ class _AttendanceTileState extends State<AttendanceTile> {
         style: TextStyle(
           fontSize: 20,
           fontWeight: FontWeight.bold,
+          fontFamily: "OpenSans Regular",
         ),
       ),
       trailing: DropdownButton(
-        hint: Text("select"),
+        hint: Text(
+          "select",
+          style: TextStyle(
+            fontFamily: "OpenSans SemiBold",
+          ),
+        ),
         value: dropdownValue,
         onChanged: (val) {
           setState(() {

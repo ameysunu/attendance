@@ -45,6 +45,7 @@ class _HalfYearState extends State<HalfYear> {
                 style: TextStyle(
                   color: Colors.indigo[900],
                   fontSize: 35,
+                  fontFamily: "OpenSans Regular",
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -59,6 +60,7 @@ class _HalfYearState extends State<HalfYear> {
                     style: TextStyle(
                       color: Colors.black,
                       fontSize: 15,
+                      fontFamily: "OpenSans Regular",
                       fontWeight: FontWeight.w600,
                     ),
                   ),
@@ -72,6 +74,7 @@ class _HalfYearState extends State<HalfYear> {
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.w600,
+                      fontFamily: "OpenSans Regular",
                     ),
                   ),
                 ],

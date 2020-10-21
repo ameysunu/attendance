@@ -43,11 +43,19 @@ class _UniformState extends State<Uniform> {
                 children: [
                   Text(
                     widget.name,
-                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 30,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "OpenSans Regular",
+                    ),
                   ),
                   Text(
                     widget.group,
-                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                    style: TextStyle(
+                      fontSize: 20,
+                      fontWeight: FontWeight.bold,
+                      fontFamily: "OpenSans Regular",
+                    ),
                   ),
                 ],
               ),
@@ -63,6 +71,7 @@ class _UniformState extends State<Uniform> {
                       'Uniform',
                       style: TextStyle(
                         fontSize: 25,
+                        fontFamily: "OpenSans SemiBold",
                       ),
                     ),
                     SizedBox(
@@ -74,6 +83,7 @@ class _UniformState extends State<Uniform> {
                         "Marks",
                         style: TextStyle(
                           fontSize: 25,
+                          fontFamily: "OpenSans SemiBold",
                         ),
                       ),
                     )
@@ -89,6 +99,7 @@ class _UniformState extends State<Uniform> {
                     'Shoes',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: "OpenSans Regular",
                     ),
                   ),
                   trailing: DropdownButton(
@@ -114,6 +125,7 @@ class _UniformState extends State<Uniform> {
                     'Shirt',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: "OpenSans Regular",
                     ),
                   ),
                   trailing: DropdownButton(
@@ -138,6 +150,7 @@ class _UniformState extends State<Uniform> {
                     'Pant',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: "OpenSans Regular",
                     ),
                   ),
                   trailing: DropdownButton(
@@ -162,6 +175,7 @@ class _UniformState extends State<Uniform> {
                     'Tie',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: "OpenSans Regular",
                     ),
                   ),
                   trailing: DropdownButton(
@@ -188,6 +202,7 @@ class _UniformState extends State<Uniform> {
                     'Skirt',
                     style: TextStyle(
                       fontSize: 20,
+                      fontFamily: "OpenSans Regular",
                     ),
                   ),
                   trailing: DropdownButton(

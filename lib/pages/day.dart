@@ -18,6 +18,7 @@ class _DayState extends State<Day> {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.normal,
+            fontFamily: "OpenSans Regular",
           ),
         ),
         elevation: 0,
@@ -73,13 +74,26 @@ class StatusBar extends StatelessWidget {
         child: ListTile(
           leading: Text(
             group,
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 25),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 25,
+              fontFamily: "OpenSans Regular",
+            ),
           ),
           title: Text(
             name,
-            style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),
+            style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 20,
+              fontFamily: "OpenSans Regular",
+            ),
           ),
-          trailing: Text(status),
+          trailing: Text(
+            status,
+            style: TextStyle(
+              fontFamily: "OpenSans SemiBold",
+            ),
+          ),
         ),
       ),
     );
