@@ -1,7 +1,11 @@
 import 'package:boysbrigade/pages/home.dart';
 import 'package:boysbrigade/provider/auth_prodiver.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:email_validator/email_validator.dart';
+
+final _firestore = FirebaseFirestore.instance;
 
 class Login extends StatefulWidget {
   @override
@@ -22,6 +26,19 @@ class _LoginState extends State<Login> {
 
   @override
   Widget build(BuildContext context) {
+    // String userId;
+    // getCurrentUser() async {
+    //   _firestore
+    //       .collection('students')
+    //       .where("userId", isEqualTo: userId)
+    //       .snapshots();
+
+    //   User user = await FirebaseAuth.instance.currentUser;
+    //   setState(() {
+    //     userId = user.uid;
+    //   });
+    // }
+
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       body: Center(

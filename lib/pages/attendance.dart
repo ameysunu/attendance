@@ -162,11 +162,21 @@ class _AttendanceTileState extends State<AttendanceTile> {
             dropdownValue = val;
           });
 
+          // FirebaseFirestore.instance
+          //     .collection("student")
+          //     .doc(widget.id)
+          //     .collection("studentattendance")
+          //     .add({
+          //   'date': "${now.day}/${now.month}/${now.year}",
+          //   'studentAttendance': dropdownValue,
+          // });
+
           FirebaseFirestore.instance
               .collection("student")
               .doc(widget.id)
-              .collection("studentattendance")
-              .add({
+              .collection("attendance")
+              .doc("update")
+              .update({
             'date': "${now.day}/${now.month}/${now.year}",
             'studentAttendance': dropdownValue,
           });
