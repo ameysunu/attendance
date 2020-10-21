@@ -59,22 +59,24 @@ class _HomeState extends State<Home> {
         ],
       ),
       // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Container(
-        height: 75.0,
-        width: 75.0,
-        child: FloatingActionButton(
-          onPressed: () {
-            Navigator.push(
-                context, MaterialPageRoute(builder: (context) => Attendance()));
-          },
-          child: Icon(
-            Icons.add,
-            size: 35,
-          ),
-          backgroundColor: Colors.indigo[900],
-          elevation: 5,
-        ),
-      ),
+      floatingActionButton: _selectedTab == 0
+          ? Container(
+              height: 75.0,
+              width: 75.0,
+              child: FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Attendance()));
+                },
+                child: Icon(
+                  Icons.add,
+                  size: 35,
+                ),
+                backgroundColor: Colors.indigo[900],
+                elevation: 5,
+              ),
+            )
+          : null,
     );
   }
 }
