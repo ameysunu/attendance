@@ -17,7 +17,10 @@ class _HalfYearState extends State<HalfYear> {
         title: Text(
           '上半年', //half year
           style: TextStyle(
-              color: Colors.black, fontWeight: FontWeight.normal, fontSize: 25),
+            color: Colors.black,
+            fontWeight: FontWeight.normal,
+            fontSize: 25,
+          ),
         ),
         elevation: 0,
         backgroundColor: Colors.blueGrey[50],
