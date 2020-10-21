@@ -11,16 +11,16 @@ class Uniform extends StatefulWidget {
 }
 
 class _UniformState extends State<Uniform> {
-  List<String> uniform = ['1','2','3'];
+  List<String> uniform = ['1', '2', '3'];
   var now = new DateTime.now();
 
   String shoe, pant, shirt, skirt, tye;
-  int total=0;
-
+  int total = 0;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[50],
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
@@ -31,59 +31,54 @@ class _UniformState extends State<Uniform> {
           ),
         ),
         elevation: 0,
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.blueGrey[50],
       ),
       body: Container(
         child: ListView(
-          padding: EdgeInsets.all(30),
+          padding: EdgeInsets.all(20),
           children: <Widget>[
             Container(
-              padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
-              child: Row(
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Text(
-                        widget.group,
-                        style: TextStyle(
-                          fontSize: 30,
-                        ),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                      Text(
-                        widget.name, //name
-                        style: TextStyle(fontSize: 30),
-                      ),
-                      SizedBox(
-                        width: 50,
-                      ),
-                    ],
+              padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+              child: Column(
+                children: [
+                  Text(
+                    widget.name,
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    widget.group,
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ],
               ),
             ),
-            Container(
-              padding: EdgeInsets.fromLTRB(50, 0, 0, 0),
-              child: Row(
-                children: [
-                  Text(
-                    'Uniform',
-                    style: TextStyle(
-                      fontSize: 30,
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      'Uniform',
+                      style: TextStyle(
+                        fontSize: 25,
+                      ),
                     ),
-                  ),
-                  SizedBox(
-                    width: 50,
-                  ),
-                  Text(
-                    "mark",
-                    style: TextStyle(
-                      fontSize: 30,
+                    SizedBox(
+                      width: 50,
                     ),
-                  )
-                ],
+                    Padding(
+                      padding: const EdgeInsets.only(right: 8.0),
+                      child: Text(
+                        "Marks",
+                        style: TextStyle(
+                          fontSize: 25,
+                        ),
+                      ),
+                    )
+                  ],
+                ),
               ),
             ),
             Column(
@@ -91,9 +86,9 @@ class _UniformState extends State<Uniform> {
                 //shoes
                 ListTile(
                   title: Text(
-                    'shoes',
+                    'Shoes',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                   trailing: DropdownButton(
@@ -107,7 +102,6 @@ class _UniformState extends State<Uniform> {
                     items: uniform.map((attend) {
                       return DropdownMenuItem(
                         child: Text("${attend}"),
-
                         value: attend,
                       );
                     }).toList(),
@@ -117,9 +111,9 @@ class _UniformState extends State<Uniform> {
                 //  shirt
                 ListTile(
                   title: Text(
-                    'shirt',
+                    'Shirt',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                   trailing: DropdownButton(
@@ -141,9 +135,9 @@ class _UniformState extends State<Uniform> {
                 //  pant
                 ListTile(
                   title: Text(
-                    'pant',
+                    'Pant',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                   trailing: DropdownButton(
@@ -165,9 +159,9 @@ class _UniformState extends State<Uniform> {
                 //  tye
                 ListTile(
                   title: Text(
-                    'tye',
+                    'Tie',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                   trailing: DropdownButton(
@@ -191,9 +185,9 @@ class _UniformState extends State<Uniform> {
 
                 ListTile(
                   title: Text(
-                    'skirt',
+                    'Skirt',
                     style: TextStyle(
-                      fontSize: 30,
+                      fontSize: 20,
                     ),
                   ),
                   trailing: DropdownButton(
@@ -221,12 +215,11 @@ class _UniformState extends State<Uniform> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
-              color: Colors.lightBlue[900],
+              color: Colors.indigo[900],
               textColor: Colors.white,
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
               onPressed: () {
-                setState(() {
-                });
+                setState(() {});
                 FirebaseFirestore.instance
                     .collection("uniform")
                     .doc(widget.id)
@@ -240,12 +233,12 @@ class _UniformState extends State<Uniform> {
                     .doc(widget.id)
                     .collection("marks")
                     .add({
-                  'date': "${now.day}/${now.month}/${now.year}",
-                  'shirt': shirt,
-                  'skirt': skirt,
-                  'shoe': shoe,
-                  'pant': pant,
-                  'tye': tye,
+                  'Date': "${now.day}/${now.month}/${now.year}",
+                  'Shirt': shirt,
+                  'Skirt': skirt,
+                  'Shoe': shoe,
+                  'Pant': pant,
+                  'Tie': tye,
                 });
 
                 // FirebaseFirestore.instance

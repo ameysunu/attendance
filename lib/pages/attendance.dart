@@ -26,7 +26,9 @@ class _AttendanceState extends State<Attendance> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[50],
       appBar: AppBar(
+        backgroundColor: Colors.blueGrey[50],
         automaticallyImplyLeading: false,
         title: Text(
           '出席率', //attendance page title
@@ -36,7 +38,6 @@ class _AttendanceState extends State<Attendance> {
           ),
         ),
         elevation: 0,
-        backgroundColor: Colors.grey[100],
       ),
       body: Container(
         child: ListView(
