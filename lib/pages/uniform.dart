@@ -229,9 +229,9 @@ class _UniformState extends State<Uniform> {
                 });
 
                 FirebaseFirestore.instance
-                    .collection("uniform")
+                    .collection("student")
                     .doc(widget.id)
-                    .collection("newmarks")
+                    .collection("marks")
                     .doc("update")
                     .update({
                   'Date': "${now.day}/${now.month}/${now.year}",
