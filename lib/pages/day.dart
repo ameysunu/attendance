@@ -10,6 +10,7 @@ class _DayState extends State<Day> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.blueGrey[50],
       appBar: AppBar(
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
@@ -20,7 +21,7 @@ class _DayState extends State<Day> {
           ),
         ),
         elevation: 0,
-        backgroundColor: Colors.grey[100],
+        backgroundColor: Colors.blueGrey[50],
       ),
       body: Container(
         child: ListView(
