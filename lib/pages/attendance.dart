@@ -62,58 +62,71 @@ class _AttendanceState extends State<Attendance> {
         ),
       ),
       body: Container(
-        child: ListView(
+        child: Column(
           children: [
-            StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection("student")
-                    .orderBy("group")
-                    .snapshots(),
-                builder: (context, snapshot) {
-                  if (snapshot.hasError) {
-                    return Text("Something went wrong");
-                  }
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return Container(
-                      child: Center(
-                        child: CircularProgressIndicator(),
-                      ),
-                    );
-                  }
+            Expanded(
+              child: ListView(
+                children: [
+                  StreamBuilder<QuerySnapshot>(
+                      stream: FirebaseFirestore.instance
+                          .collection("student")
+                          .orderBy("group")
+                          .snapshots(),
+                      builder: (context, snapshot) {
+                        if (snapshot.hasError) {
+                          return Text("Something went wrong");
+                        }
+                        if (snapshot.connectionState ==
+                            ConnectionState.waiting) {
+                          return Container(
+                            child: Center(
+                              child: CircularProgressIndicator(),
+                            ),
+                          );
+                        }
 
-                  return ListView(
-                    shrinkWrap: true,
-                    children:
-                        snapshot.data.docs.map((DocumentSnapshot document) {
-                      return AttendanceTile(
-                        name: document.data()['name'],
-                        group: document.data()['group'],
-                        id: document.data()['id'],
+                        return ListView(
+                          shrinkWrap: true,
+                          children: snapshot.data.docs
+                              .map((DocumentSnapshot document) {
+                            return AttendanceTile(
+                              name: document.data()['name'],
+                              group: document.data()['group'],
+                              id: document.data()['id'],
+                            );
+                          }).toList(),
+                        );
+                      }),
+                ],
+              ),
+            ),
+            Container(
+              color: Colors.white,
+              child: Align(
+                alignment: FractionalOffset.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: RaisedButton(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(30),
+                    ),
+                    color: Colors.blueGrey[900],
+                    textColor: Colors.white,
+                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        MaterialPageRoute(builder: (context) => Day()),
                       );
-                    }).toList(),
-                  );
-                }),
-            Padding(
-              padding: const EdgeInsets.all(10.0),
-              child: RaisedButton(
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(30),
-                ),
-                color: Colors.blueGrey[900],
-                textColor: Colors.white,
-                padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
-                onPressed: () {
-                  Navigator.pop(
-                    context,
-                    MaterialPageRoute(builder: (context) => Day()),
-                  );
-                  //_AttendanceTileState().add();
-                },
-                child: Text(
-                  'Save',
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontFamily: "OpenSans Regular",
+                      //_AttendanceTileState().add();
+                    },
+                    child: Text(
+                      'Save',
+                      style: TextStyle(
+                        fontSize: 20,
+                        fontFamily: "OpenSans Regular",
+                      ),
+                    ),
                   ),
                 ),
               ),
