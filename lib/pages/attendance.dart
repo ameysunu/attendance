@@ -5,6 +5,7 @@ import 'uniform.dart';
 import 'day.dart';
 
 final firestoreInstance = FirebaseFirestore.instance;
+var currentDate = new DateTime.now();
 
 class Attendance extends StatefulWidget {
   @override
@@ -27,17 +28,38 @@ class _AttendanceState extends State<Attendance> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
-      appBar: AppBar(
-        backgroundColor: Colors.blueGrey[50],
-        automaticallyImplyLeading: false,
-        title: Text(
-          '出席率',
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.normal,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Text(
+                  '出席率',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: Text(
+                  "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'OpenSans SemiBold'),
+                ),
+              )
+            ],
           ),
+          elevation: 0,
         ),
-        elevation: 0,
       ),
       body: Container(
         child: ListView(
@@ -45,6 +67,7 @@ class _AttendanceState extends State<Attendance> {
             StreamBuilder<QuerySnapshot>(
                 stream: FirebaseFirestore.instance
                     .collection("student")
+                    .orderBy("group")
                     .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
@@ -142,79 +165,81 @@ class _AttendanceTileState extends State<AttendanceTile> {
                         id: widget.id,
                       )));
         },
-        child: Text(
-          widget.name,
-          style: TextStyle(
-            fontSize: 25,
-            fontWeight: FontWeight.bold,
-            fontFamily: "OpenSans Regular",
+        child: Padding(
+          padding: const EdgeInsets.all(10.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                widget.group,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "OpenSans Regular",
+                ),
+              ),
+              Text(
+                widget.name,
+                style: TextStyle(
+                  fontSize: 25,
+                  fontWeight: FontWeight.bold,
+                  fontFamily: "OpenSans Regular",
+                ),
+              ),
+              DropdownButton(
+                hint: Text(
+                  "選擇",
+                  style: TextStyle(
+                    fontFamily: "OpenSans SemiBold",
+                  ),
+                ),
+                value: dropdownValue,
+                onChanged: (val) {
+                  setState(() {
+                    dropdownValue = val;
+                  });
+                  if ('date' != "${now.day}/${now.month}/${now.year}") {
+                    FirebaseFirestore.instance
+                        .collection("student")
+                        .doc(widget.id)
+                        .collection("attendance")
+                        .add({
+                      'date': "${now.day}/${now.month}/${now.year}",
+                      'studentAttendance': dropdownValue,
+                    });
+                  } else {
+                    FirebaseFirestore.instance
+                        .collection("student")
+                        .doc(widget.id)
+                        .collection("attendance")
+                        .doc("update")
+                        .update({
+                      'date': "${now.day}/${now.month}/${now.year}",
+                      'studentAttendance': dropdownValue,
+                    });
+                  }
+                  //  for day
+                  FirebaseFirestore.instance
+                      .collection("day")
+                      .doc(widget.id)
+                      .set({
+                    'name': widget.name,
+                    'group': widget.group,
+                    "status": dropdownValue,
+                    "totalMark": ""
+                  });
+                },
+                items: attendance.map((attend) {
+                  return DropdownMenuItem(
+                    child: Text(attend),
+                    value: attend,
+                  );
+                }).toList(),
+              ),
+            ],
           ),
         ),
-      ),
-      subtitle: Text(
-        widget.group,
-        style: TextStyle(
-          fontSize: 25,
-          fontWeight: FontWeight.bold,
-          fontFamily: "OpenSans Regular",
-        ),
-      ),
-      trailing: DropdownButton(
-        hint: Text(
-          "選擇",
-          style: TextStyle(
-            fontFamily: "OpenSans SemiBold",
-          ),
-        ),
-        value: dropdownValue,
-        onChanged: (val) {
-          setState(() {
-            dropdownValue = val;
-          });
-
-          // FirebaseFirestore.instance
-          //     .collection("student")
-          //     .doc(widget.id)
-          //     .collection("studentattendance")
-          //     .add({
-          //   'date': "${now.day}/${now.month}/${now.year}",
-          //   'studentAttendance': dropdownValue,
-          // });
-
-          FirebaseFirestore.instance
-              .collection("student")
-              .doc(widget.id)
-              .collection("attendance")
-              .doc("update")
-              .update({
-            'date': "${now.day}/${now.month}/${now.year}",
-            'studentAttendance': dropdownValue,
-          });
-
-          //  for day
-          FirebaseFirestore.instance.collection("day").doc(widget.id).set({
-            'name': widget.name,
-            'group': widget.group,
-            "status": dropdownValue,
-            "totalMark": ""
-          });
-        },
-        items: attendance.map((attend) {
-          return DropdownMenuItem(
-            child: Text(attend),
-            value: attend,
-          );
-        }).toList(),
       ),
     );
   }
-}
-
-void add() {
-  firestoreInstance.collection("student").doc().collection("attendance").add({
-    "status": "working",
-    "date": FieldValue.serverTimestamp(),
-  }).then((value) {
-    print("success");
-  });
 }
