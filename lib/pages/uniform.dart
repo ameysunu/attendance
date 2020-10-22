@@ -230,7 +230,7 @@ class _UniformState extends State<Uniform> {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30),
               ),
-              color: Colors.indigo[900],
+              color: Colors.blueGrey[900],
               textColor: Colors.white,
               padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
               onPressed: () {

@@ -44,7 +44,7 @@ class _LoginState extends State<Login> {
       backgroundColor: Colors.blueGrey[50],
       body: Center(
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(30.0, 50, 30, 0),
+          padding: const EdgeInsets.fromLTRB(40.0, 50, 40, 0),
           child: Form(
             key: _loginFormKey,
             child: ListView(
@@ -64,9 +64,9 @@ class _LoginState extends State<Login> {
                       border: InputBorder.none,
                       hintText: '請輸入電郵地址',
                       hintStyle:
-                          TextStyle(fontSize: 15, color: Colors.grey[700]),
+                          TextStyle(fontSize: 16, color: Colors.grey[700]),
                       contentPadding: new EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
+                          vertical: 15.0, horizontal: 20.0),
                     ),
                     controller: _emailController,
                     keyboardType: TextInputType.emailAddress,
@@ -81,7 +81,7 @@ class _LoginState extends State<Login> {
                   ),
                 ),
                 SizedBox(
-                  height: 10,
+                  height: 15,
                 ),
                 Material(
                   color: Colors.white,
@@ -91,9 +91,9 @@ class _LoginState extends State<Login> {
                       border: InputBorder.none,
                       hintText: '請輸入密碼',
                       hintStyle:
-                          TextStyle(fontSize: 15, color: Colors.grey[700]),
+                          TextStyle(fontSize: 16, color: Colors.grey[700]),
                       contentPadding: new EdgeInsets.symmetric(
-                          vertical: 10.0, horizontal: 20.0),
+                          vertical: 15.0, horizontal: 20.0),
                     ),
                     controller: _passwordController,
                     obscureText: true,
@@ -111,14 +111,14 @@ class _LoginState extends State<Login> {
                 RaisedButton(
                   child: Text(
                     '登錄',
-                    style: TextStyle(fontSize: 15),
+                    style: TextStyle(fontSize: 16),
                   ),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
-                  color: Colors.indigo[900],
+                  color: Colors.blueGrey[900],
                   textColor: Colors.white,
-                  padding: EdgeInsets.symmetric(vertical: 10, horizontal: 125),
+                  padding: EdgeInsets.symmetric(vertical: 15, horizontal: 20.0),
                   onPressed: () async {
                     if (_loginFormKey.currentState.validate()) {
                       try {

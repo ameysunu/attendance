@@ -38,23 +38,23 @@ class _HomeState extends State<Home> {
           });
         },
         backgroundColor: Colors.white,
-        selectedItemColor: Colors.indigo[900],
+        selectedItemColor: Colors.blueGrey[900],
         unselectedItemColor: Colors.grey[400],
         iconSize: 45,
-        selectedFontSize: 15,
-        unselectedFontSize: 12,
+        selectedFontSize: 13,
+        unselectedFontSize: 13,
         items: [
           BottomNavigationBarItem(
             icon: Icon(Icons.date_range),
-            title: new Text('半年'), //half-year
+            title: new Text('半年'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.schedule),
-            title: new Text('當天'), //day-to-day
+            title: new Text('當天'),
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.settings),
-            title: new Text('設定'), //day-to-day
+            title: new Text('設定'),
           ),
         ],
       ),
@@ -72,7 +72,7 @@ class _HomeState extends State<Home> {
                   Icons.add,
                   size: 35,
                 ),
-                backgroundColor: Colors.indigo[900],
+                backgroundColor: Colors.blueGrey[900],
                 elevation: 5,
               ),
             )

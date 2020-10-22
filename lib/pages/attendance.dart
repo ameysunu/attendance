@@ -31,7 +31,7 @@ class _AttendanceState extends State<Attendance> {
         backgroundColor: Colors.blueGrey[50],
         automaticallyImplyLeading: false,
         title: Text(
-          '出席率', //attendance page title
+          '出席率',
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.normal,
@@ -76,7 +76,7 @@ class _AttendanceState extends State<Attendance> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                color: Colors.lightBlue[900],
+                color: Colors.blueGrey[900],
                 textColor: Colors.white,
                 padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
                 onPressed: () {
@@ -87,7 +87,7 @@ class _AttendanceState extends State<Attendance> {
                   //_AttendanceTileState().add();
                 },
                 child: Text(
-                  'Save', //submit
+                  'Save',
                   style: TextStyle(
                     fontSize: 20,
                     fontFamily: "OpenSans Regular",
@@ -154,14 +154,14 @@ class _AttendanceTileState extends State<AttendanceTile> {
       subtitle: Text(
         widget.group,
         style: TextStyle(
-          fontSize: 20,
+          fontSize: 25,
           fontWeight: FontWeight.bold,
           fontFamily: "OpenSans Regular",
         ),
       ),
       trailing: DropdownButton(
         hint: Text(
-          "select",
+          "選擇",
           style: TextStyle(
             fontFamily: "OpenSans SemiBold",
           ),
