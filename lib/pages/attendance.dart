@@ -212,7 +212,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                     dropdownValue = val;
                   });
 
-                  if ('data' != 'data') {
+                  if ('date' != 'date') {
                     FirebaseFirestore.instance
                         .collection("student")
                         .doc(widget.id)
