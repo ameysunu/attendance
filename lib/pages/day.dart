@@ -12,6 +12,7 @@ class _DayState extends State<Day> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       appBar: AppBar(
+        centerTitle: true,
         iconTheme: IconThemeData(color: Colors.black),
         title: Text(
           '當天', //day page that will show all data when teacher click submit
@@ -22,14 +23,16 @@ class _DayState extends State<Day> {
           ),
         ),
         elevation: 0,
-        backgroundColor: Colors.blueGrey[50],
+        backgroundColor: Colors.white,
       ),
       body: Container(
         child: ListView(
           children: [
             StreamBuilder<QuerySnapshot>(
-                stream:
-                    FirebaseFirestore.instance.collection("day").snapshots(),
+                stream: FirebaseFirestore.instance
+                    .collection("day")
+                    .orderBy("group")
+                    .snapshots(),
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text("Something went wrong");
@@ -67,33 +70,46 @@ class StatusBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: EdgeInsets.symmetric(horizontal: 25, vertical: 5),
-      child: Card(
-        elevation: 10.0,
-        child: ListTile(
-          leading: Text(
-            group,
-            style: TextStyle(
-              fontWeight: FontWeight.bold,
-              fontSize: 25,
-              fontFamily: "OpenSans Regular",
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Container(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Text(
+                group,
+                style: TextStyle(fontFamily: 'OpenSans SemiBold', fontSize: 20),
+              ),
             ),
-          ),
-          title: Text(
-            name,
-            style: TextStyle(
-              fontWeight: FontWeight.w500,
-              fontSize: 20,
-              fontFamily: "OpenSans Regular",
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0, right: 10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    name,
+                    style: TextStyle(
+                        fontFamily: 'OpenSans SemiBold',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  ),
+                  Text(
+                    status,
+                    style: TextStyle(
+                        fontFamily: 'OpenSans SemiBold', fontSize: 20),
+                  ),
+                  Text(
+                    '90',
+                    style: TextStyle(
+                        fontFamily: 'OpenSans SemiBold', fontSize: 20),
+                  ),
+                ],
+              ),
             ),
-          ),
-          trailing: Text(
-            status,
-            style: TextStyle(
-              fontFamily: "OpenSans SemiBold",
-            ),
-          ),
+          ],
         ),
       ),
     );
