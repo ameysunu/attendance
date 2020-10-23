@@ -1,4 +1,3 @@
-import 'package:boysbrigade/pages/settings.dart';
 import 'package:flutter/material.dart';
 
 class HalfYear extends StatefulWidget {
@@ -14,6 +13,7 @@ class _HalfYearState extends State<HalfYear> {
     var _aspectRatio = _width / 250;
     return Scaffold(
       appBar: AppBar(
+        automaticallyImplyLeading: false,
         title: Text(
           '上半年', //half year
           style: TextStyle(
