@@ -59,25 +59,31 @@ class _SettingsState extends State<Settings> {
           ),
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: Container(
-              child: Row(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Icon(Icons.help),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Text(
-                      "About",
-                      style: TextStyle(
-                          fontFamily: "OpenSans SemiBold", fontSize: 20),
+            child: InkWell(
+              child: Container(
+                child: Row(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Icon(Icons.help),
                     ),
-                  ),
-                  Spacer(),
-                  Icon(Icons.arrow_right),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Text(
+                        "About",
+                        style: TextStyle(
+                            fontFamily: "OpenSans SemiBold", fontSize: 20),
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_right),
+                  ],
+                ),
               ),
+              onTap: () {
+                Navigator.push(
+                    context, MaterialPageRoute(builder: (context) => About()));
+              },
             ),
           ),
         ],
@@ -182,6 +188,48 @@ class _AccountState extends State<Account> {
               ),
             ),
           ),
+        ],
+      ),
+    );
+  }
+}
+
+class About extends StatefulWidget {
+  @override
+  _AboutState createState() => _AboutState();
+}
+
+class _AboutState extends State<About> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.white,
+      appBar: AppBar(
+        iconTheme: IconThemeData(
+          color: Colors.black,
+        ),
+        elevation: 0,
+        centerTitle: true,
+        backgroundColor: Colors.white,
+        title: Text(
+          'About',
+          style:
+              TextStyle(fontFamily: 'OpenSans SemiBold', color: Colors.black),
+        ),
+      ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.fromLTRB(20.0, 50, 20, 0),
+            child: Container(
+              height: MediaQuery.of(context).size.height * 0.3,
+              width: MediaQuery.of(context).size.width * 1,
+              child: Text(
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
+                style: TextStyle(fontFamily: 'OpenSans Regular', fontSize: 20),
+              ),
+            ),
+          )
         ],
       ),
     );
