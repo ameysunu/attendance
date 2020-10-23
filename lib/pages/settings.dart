@@ -41,9 +41,8 @@ class _SettingsState extends State<Settings> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        "Account",
-                        style: TextStyle(
-                            fontFamily: "OpenSans SemiBold", fontSize: 20),
+                        "帳戶",
+                        style: TextStyle(fontSize: 25),
                       ),
                     ),
                     Spacer(),
@@ -70,9 +69,8 @@ class _SettingsState extends State<Settings> {
                     Padding(
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
-                        "About",
-                        style: TextStyle(
-                            fontFamily: "OpenSans SemiBold", fontSize: 20),
+                        "關於",
+                        style: TextStyle(fontSize: 25),
                       ),
                     ),
                     Spacer(),
@@ -114,9 +112,8 @@ class _AccountState extends State<Account> {
         centerTitle: true,
         backgroundColor: Colors.white,
         title: Text(
-          'Account',
-          style:
-              TextStyle(fontFamily: 'OpenSans SemiBold', color: Colors.black),
+          '帳戶',
+          style: TextStyle(color: Colors.black),
         ),
       ),
       body: Column(
@@ -130,9 +127,8 @@ class _AccountState extends State<Account> {
                   Padding(
                     padding: const EdgeInsets.all(10.0),
                     child: Text(
-                      "Email",
-                      style: TextStyle(
-                          fontFamily: 'OpenSans SemiBold', fontSize: 15),
+                      "電郵地址",
+                      style: TextStyle(fontSize: 18),
                     ),
                   ),
                   Padding(
@@ -149,7 +145,7 @@ class _AccountState extends State<Account> {
                                 const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                             child: Text(
                               email,
-                              style: TextStyle(fontFamily: 'OpenSans SemiBold'),
+                              style: TextStyle(fontSize: 18),
                             ),
                           )
                         ],
@@ -178,10 +174,9 @@ class _AccountState extends State<Account> {
                         MaterialPageRoute(builder: (context) => Login()));
                   },
                   child: Text(
-                    'Logout', //submit
+                    '登出',
                     style: TextStyle(
                       fontSize: 20,
-                      fontFamily: "OpenSans Regular",
                     ),
                   ),
                 ),
@@ -212,9 +207,8 @@ class _AboutState extends State<About> {
         centerTitle: true,
         backgroundColor: Colors.white,
         title: Text(
-          'About',
-          style:
-              TextStyle(fontFamily: 'OpenSans SemiBold', color: Colors.black),
+          '關於',
+          style: TextStyle(color: Colors.black),
         ),
       ),
       body: Column(
@@ -222,11 +216,29 @@ class _AboutState extends State<About> {
           Padding(
             padding: const EdgeInsets.fromLTRB(20.0, 50, 20, 0),
             child: Container(
-              height: MediaQuery.of(context).size.height * 0.3,
               width: MediaQuery.of(context).size.width * 1,
-              child: Text(
-                "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.",
-                style: TextStyle(fontFamily: 'OpenSans Regular', fontSize: 20),
+              child: Column(
+                children: [
+                  Text(
+                    "我身為一位中級組隊員，我希望集隊後可以愉快地打籃球，不用統計人數或者收通告。為 BB78 創造一個跟美好的下午，而且為每個 BB78 導師提供優質自動化服務。",
+                    style:
+                        TextStyle(fontFamily: 'OpenSans Regular', fontSize: 20),
+                  ),
+                  SizedBox(height: 60.0),
+                  Text(
+                    "隆重介紹：",
+                    style:
+                        TextStyle(fontFamily: 'OpenSans Regular', fontSize: 20),
+                  ),
+                  SizedBox(height: 10.0),
+                  Text(
+                    "BB78 導師 App 謝佩妏的傑作",
+                    style: TextStyle(
+                        fontFamily: 'OpenSans Regular',
+                        fontSize: 20,
+                        fontWeight: FontWeight.bold),
+                  )
+                ],
               ),
             ),
           )
