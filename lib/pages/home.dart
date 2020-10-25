@@ -58,7 +58,6 @@ class _HomeState extends State<Home> {
           ),
         ],
       ),
-      // floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
       floatingActionButton: _selectedTab == 0
           ? Container(
               height: 75.0,
