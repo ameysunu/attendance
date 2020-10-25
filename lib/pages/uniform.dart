@@ -33,7 +33,7 @@ class _UniformState extends State<Uniform> {
               Padding(
                 padding: const EdgeInsets.only(top: 20.0),
                 child: Text(
-                  '制服', //uniform
+                  '制服',
                   style: TextStyle(
                     color: Colors.black,
                     fontWeight: FontWeight.normal,
@@ -94,7 +94,7 @@ class _UniformState extends State<Uniform> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
-                            'Uniform',
+                            '制服',
                             style: TextStyle(
                               fontSize: 25,
                               fontFamily: "OpenSans SemiBold",
@@ -106,7 +106,7 @@ class _UniformState extends State<Uniform> {
                           Padding(
                             padding: const EdgeInsets.only(right: 8.0),
                             child: Text(
-                              "Marks",
+                              "分數",
                               style: TextStyle(
                                 fontSize: 25,
                                 fontFamily: "OpenSans SemiBold",
@@ -119,17 +119,16 @@ class _UniformState extends State<Uniform> {
                   ),
                   Column(
                     children: [
-                      //shoes
                       ListTile(
                         title: Text(
-                          'Shoes',
+                          '襯衫',
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "OpenSans Regular",
                           ),
                         ),
                         trailing: DropdownButton(
-                          hint: Text("marks"),
+                          hint: Text("選擇"),
                           value: shoe,
                           onChanged: (val) {
                             setState(() {
@@ -144,18 +143,16 @@ class _UniformState extends State<Uniform> {
                           }).toList(),
                         ),
                       ),
-
-                      //  shirt
                       ListTile(
                         title: Text(
-                          'Shirt',
+                          '裙/褲',
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "OpenSans Regular",
                           ),
                         ),
                         trailing: DropdownButton(
-                          hint: Text("marks"),
+                          hint: Text("選擇"),
                           value: shirt,
                           onChanged: (val) {
                             setState(() {
@@ -170,17 +167,16 @@ class _UniformState extends State<Uniform> {
                           }).toList(),
                         ),
                       ),
-                      //  pant
                       ListTile(
                         title: Text(
-                          'Pant',
+                          '皮帶',
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "OpenSans Regular",
                           ),
                         ),
                         trailing: DropdownButton(
-                          hint: Text("marks"),
+                          hint: Text("選擇"),
                           value: pant,
                           onChanged: (val) {
                             setState(() {
@@ -195,17 +191,16 @@ class _UniformState extends State<Uniform> {
                           }).toList(),
                         ),
                       ),
-                      //  tye
                       ListTile(
                         title: Text(
-                          'Tie',
+                          '皮鞋',
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "OpenSans Regular",
                           ),
                         ),
                         trailing: DropdownButton(
-                          hint: Text("marks"),
+                          hint: Text("選擇"),
                           value: tye,
                           onChanged: (val) {
                             setState(() {
@@ -220,19 +215,16 @@ class _UniformState extends State<Uniform> {
                           }).toList(),
                         ),
                       ),
-
-                      //  skirt
-
                       ListTile(
                         title: Text(
-                          'Skirt',
+                          '其他',
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "OpenSans Regular",
                           ),
                         ),
                         trailing: DropdownButton(
-                          hint: Text("marks"),
+                          hint: Text("選擇"),
                           value: skirt,
                           onChanged: (val) {
                             setState(() {
@@ -300,7 +292,7 @@ class _UniformState extends State<Uniform> {
                       Navigator.pop(context);
                     },
                     child: Text(
-                      '提交', //submit
+                      '提交',
                       style: TextStyle(fontSize: 20),
                     ),
                   ),

@@ -220,7 +220,7 @@ class _AboutState extends State<About> {
               child: Column(
                 children: [
                   Text(
-                    "身為一位中級組隊員，我希望集隊後可以愉快地打籃球，不用統計人數或者收通告。為 BB78 創造一個跟美好的下午，而且為每個 BB78 導師提供優質自動化服務。",
+                    "身為一位中級組隊員，我希望集隊後可以愉快地打籃球，不用統計人數或者收通告。為 BB78 創造一個更美好的下午，而且為每個 BB78 導師提供優質自動化服務。",
                     style:
                         TextStyle(fontFamily: 'OpenSans Regular', fontSize: 20),
                   ),
