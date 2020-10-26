@@ -52,6 +52,7 @@ class _DayState extends State<Day> {
                         name: doc.data()['name'],
                         group: doc.data()['group'],
                         status: doc.data()['status'],
+                        totalMark: doc.data()['totalMark'],
                       );
                     }).toList(),
                   );
@@ -64,9 +65,9 @@ class _DayState extends State<Day> {
 }
 
 class StatusBar extends StatelessWidget {
-  final String name, group, status;
+  final String name, group, status, totalMark;
 
-  const StatusBar({Key key, this.name, this.group, this.status})
+  const StatusBar({Key key, this.name, this.group, this.status, this.totalMark})
       : super(key: key);
 
   @override
@@ -103,7 +104,7 @@ class StatusBar extends StatelessWidget {
                         fontFamily: 'OpenSans SemiBold', fontSize: 20),
                   ),
                   Text(
-                    finalMarks,
+                    totalMark,
                     style: TextStyle(
                         fontFamily: 'OpenSans SemiBold', fontSize: 20),
                   ),

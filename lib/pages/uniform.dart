@@ -296,6 +296,13 @@ class _UniformState extends State<Uniform> {
                         'Tie': tye,
                       });
 
+                      FirebaseFirestore.instance
+                          .collection("day")
+                          .doc(widget.id)
+                          .update({
+                        'totalMark': finalMarks,
+                      });
+
                       // FirebaseFirestore.instance
                       // .collection("day")
                       // .doc(widget.id)
