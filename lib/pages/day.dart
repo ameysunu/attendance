@@ -12,19 +12,38 @@ class _DayState extends State<Day> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
-      appBar: AppBar(
-        centerTitle: true,
-        iconTheme: IconThemeData(color: Colors.black),
-        title: Text(
-          '當天', //day page that will show all data when teacher click submit
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.normal,
-            fontFamily: "OpenSans Regular",
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          automaticallyImplyLeading: false,
+          title: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 20.0),
+                child: Text(
+                  '當天',
+                  style: TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.normal,
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10.0),
+                child: Text(
+                  "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+                  style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                      fontFamily: 'OpenSans SemiBold'),
+                ),
+              )
+            ],
           ),
+          elevation: 0,
         ),
-        elevation: 0,
-        backgroundColor: Colors.white,
       ),
       body: Container(
         child: ListView(
@@ -53,6 +72,7 @@ class _DayState extends State<Day> {
                         group: doc.data()['group'],
                         status: doc.data()['status'],
                         totalMark: doc.data()['totalMark'],
+                        date: doc.data()['date'],
                       );
                     }).toList(),
                   );
@@ -65,9 +85,10 @@ class _DayState extends State<Day> {
 }
 
 class StatusBar extends StatelessWidget {
-  final String name, group, status, totalMark;
+  final String name, group, status, totalMark, date;
 
-  const StatusBar({Key key, this.name, this.group, this.status, this.totalMark})
+  const StatusBar(
+      {Key key, this.name, this.group, this.status, this.totalMark, this.date})
       : super(key: key);
 
   @override
