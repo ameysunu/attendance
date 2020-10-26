@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'uniform.dart';
 
 class Day extends StatefulWidget {
   @override
@@ -102,7 +103,7 @@ class StatusBar extends StatelessWidget {
                         fontFamily: 'OpenSans SemiBold', fontSize: 20),
                   ),
                   Text(
-                    '90',
+                    finalMarks,
                     style: TextStyle(
                         fontFamily: 'OpenSans SemiBold', fontSize: 20),
                   ),

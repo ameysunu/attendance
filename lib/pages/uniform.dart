@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 var currentDate = new DateTime.now();
+String finalMarks = "0";
 
 class Uniform extends StatefulWidget {
   final String name, group, id;
@@ -17,10 +18,21 @@ class _UniformState extends State<Uniform> {
   var now = new DateTime.now();
 
   String shoe, pant, shirt, skirt, tye;
-  int total = 0;
+  int total;
 
   @override
   Widget build(BuildContext context) {
+    void calcSum() {
+      total = int.parse(shirt) +
+          int.parse(skirt) +
+          int.parse(shoe) +
+          int.parse(pant) +
+          int.parse(tye);
+      setState(() {
+        finalMarks = total.toString();
+      });
+    }
+
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       appBar: PreferredSize(
@@ -290,6 +302,7 @@ class _UniformState extends State<Uniform> {
                       // .update({'totalMark':"${}"});
 
                       Navigator.pop(context);
+                      calcSum();
                     },
                     child: Text(
                       '提交',
