@@ -155,10 +155,9 @@ class _AttendanceTileState extends State<AttendanceTile> {
         .doc(widget.id)
         .collection("attendance")
         .add({
-      'date': FieldValue.serverTimestamp(),
+      'date': "${now.day}/${now.month}/${now.year}",
       'studentAttendance': dropdownValue,
     });
-    print(widget.id);
   }
 
   String dropdownValue;
@@ -212,26 +211,21 @@ class _AttendanceTileState extends State<AttendanceTile> {
                     dropdownValue = val;
                   });
 
-                  if ('date' != 'date') {
-                    FirebaseFirestore.instance
-                        .collection("student")
-                        .doc(widget.id)
-                        .collection("attendance")
-                        .add({
-                      'date': "${now.day}/${now.month}/${now.year}",
-                      'studentAttendance': dropdownValue,
-                    });
-                  } else {
-                    FirebaseFirestore.instance
-                        .collection("student")
-                        .doc(widget.id)
-                        .collection("attendance")
-                        .doc("update")
-                        .update({
-                      'date': "${now.day}/${now.month}/${now.year}",
-                      'studentAttendance': dropdownValue,
-                    });
-                  }
+                  // FirebaseFirestore.instance
+                  //     .collection("student")
+                  //     .doc(widget.id)
+                  //     .collection("attendance")
+                  //     .add({
+                  //   'date': "${now.day}/${now.month}/${now.year}",
+                  //   'studentAttendance': dropdownValue,
+                  // });
+                  FirebaseFirestore.instance
+                      .collection("student")
+                      .doc(widget.id)
+                      .collection("attendance")
+                      .limit(1)
+                      .get()
+                      .then((value) => add());
                   //  for day
                   FirebaseFirestore.instance
                       .collection("day")
