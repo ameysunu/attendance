@@ -13,7 +13,7 @@ class Attendance extends StatefulWidget {
 }
 
 class _AttendanceState extends State<Attendance> {
-  List<String> attendance = ['present', 'absent', 'late'];
+  List<String> attendance = ['present', 'absent', 'sick', 'late'];
   String dropdownValue;
   Stream studentStream;
 
@@ -148,7 +148,7 @@ class AttendanceTile extends StatefulWidget {
 }
 
 class _AttendanceTileState extends State<AttendanceTile> {
-  List<String> attendance = ['present', 'absent', 'late'];
+  List<String> attendance = ['present', 'absent', 'sick', 'late'];
   void add() {
     FirebaseFirestore.instance
         .collection("student")

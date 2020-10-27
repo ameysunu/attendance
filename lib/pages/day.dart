@@ -30,16 +30,6 @@ class _DayState extends State<Day> {
                   ),
                 ),
               ),
-              // Padding(
-              //   padding: const EdgeInsets.only(bottom: 10.0),
-              //   child: Text(
-              //     "${currentDate.day}/${currentDate.month}/${currentDate.year}",
-              //     style: TextStyle(
-              //         color: Colors.black,
-              //         fontWeight: FontWeight.normal,
-              //         fontFamily: 'OpenSans SemiBold'),
-              //   ),
-              // )
             ],
           ),
           elevation: 0,
@@ -93,6 +83,13 @@ class StatusBar extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Color getColor(attendance) {
+      if (status == "present" || status == "late") {
+        return Colors.blueGrey[900];
+      } else
+        return Colors.grey[400];
+    }
+
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
@@ -122,7 +119,9 @@ class StatusBar extends StatelessWidget {
                   Text(
                     status,
                     style: TextStyle(
-                        fontFamily: 'OpenSans SemiBold', fontSize: 20),
+                        fontFamily: 'OpenSans SemiBold',
+                        fontSize: 20,
+                        color: getColor(status)),
                   ),
                   Text(
                     totalMark,
