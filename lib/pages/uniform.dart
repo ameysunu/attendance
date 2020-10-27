@@ -17,17 +17,17 @@ class _UniformState extends State<Uniform> {
   List<String> uniform = ['1', '2', '3'];
   var now = new DateTime.now();
 
-  String shoe, pant, shirt, skirt, tye;
-  // int total;
+  // String shoe, pant, shirt, skirt, tye;
+  String shirt, pant, belt, shoe, other;
 
   @override
   Widget build(BuildContext context) {
     void calcSum() {
       int total = int.parse(shirt) +
-          int.parse(skirt) +
-          int.parse(shoe) +
           int.parse(pant) +
-          int.parse(tye);
+          int.parse(belt) +
+          int.parse(shoe) +
+          int.parse(other);
       setState(() {
         finalMarks = total.toString();
       });
@@ -111,6 +111,7 @@ class _UniformState extends State<Uniform> {
                             style: TextStyle(
                               fontSize: 25,
                               fontFamily: "OpenSans SemiBold",
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           SizedBox(
@@ -123,6 +124,7 @@ class _UniformState extends State<Uniform> {
                               style: TextStyle(
                                 fontSize: 25,
                                 fontFamily: "OpenSans SemiBold",
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
                           )
@@ -135,30 +137,6 @@ class _UniformState extends State<Uniform> {
                       ListTile(
                         title: Text(
                           '襯衫',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: "OpenSans Regular",
-                          ),
-                        ),
-                        trailing: DropdownButton(
-                          hint: Text("選擇"),
-                          value: shoe,
-                          onChanged: (val) {
-                            setState(() {
-                              shoe = val;
-                            });
-                          },
-                          items: uniform.map((attend) {
-                            return DropdownMenuItem(
-                              child: Text("${attend}"),
-                              value: attend,
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      ListTile(
-                        title: Text(
-                          '裙/褲',
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "OpenSans Regular",
@@ -182,7 +160,7 @@ class _UniformState extends State<Uniform> {
                       ),
                       ListTile(
                         title: Text(
-                          '皮帶',
+                          '裙/褲',
                           style: TextStyle(
                             fontSize: 20,
                             fontFamily: "OpenSans Regular",
@@ -206,6 +184,30 @@ class _UniformState extends State<Uniform> {
                       ),
                       ListTile(
                         title: Text(
+                          '皮帶',
+                          style: TextStyle(
+                            fontSize: 20,
+                            fontFamily: "OpenSans Regular",
+                          ),
+                        ),
+                        trailing: DropdownButton(
+                          hint: Text("選擇"),
+                          value: belt,
+                          onChanged: (val) {
+                            setState(() {
+                              belt = val;
+                            });
+                          },
+                          items: uniform.map((attend) {
+                            return DropdownMenuItem(
+                              child: Text("${attend}"),
+                              value: attend,
+                            );
+                          }).toList(),
+                        ),
+                      ),
+                      ListTile(
+                        title: Text(
                           '皮鞋',
                           style: TextStyle(
                             fontSize: 20,
@@ -214,10 +216,10 @@ class _UniformState extends State<Uniform> {
                         ),
                         trailing: DropdownButton(
                           hint: Text("選擇"),
-                          value: tye,
+                          value: shoe,
                           onChanged: (val) {
                             setState(() {
-                              tye = val;
+                              shoe = val;
                             });
                           },
                           items: uniform.map((attend) {
@@ -238,10 +240,10 @@ class _UniformState extends State<Uniform> {
                         ),
                         trailing: DropdownButton(
                           hint: Text("選擇"),
-                          value: skirt,
+                          value: other,
                           onChanged: (val) {
                             setState(() {
-                              skirt = val;
+                              other = val;
                             });
                           },
                           items: uniform.map((attend) {
@@ -291,10 +293,10 @@ class _UniformState extends State<Uniform> {
                           .update({
                         'Date': "${now.day}/${now.month}/${now.year}",
                         'Shirt': shirt,
-                        'Skirt': skirt,
-                        'Shoe': shoe,
-                        'Pant': pant,
-                        'Tie': tye,
+                        'Skirt': pant,
+                        'Shoe': belt,
+                        'Pant': shoe,
+                        'Tie': other,
                       });
                       // FirebaseFirestore.instance
                       // .collection("day")

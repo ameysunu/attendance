@@ -42,7 +42,10 @@ class _SettingsState extends State<Settings> {
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
                         "帳戶",
-                        style: TextStyle(fontSize: 25),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     Spacer(),
@@ -70,7 +73,10 @@ class _SettingsState extends State<Settings> {
                       padding: const EdgeInsets.all(10.0),
                       child: Text(
                         "關於",
-                        style: TextStyle(fontSize: 25),
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
                     ),
                     Spacer(),

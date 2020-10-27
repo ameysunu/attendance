@@ -84,7 +84,7 @@ class StatusBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     Color getColor(attendance) {
-      if (status == "present" || status == "late") {
+      if (status == "出席" || status == "遲到") {
         return Colors.blueGrey[900];
       } else
         return Colors.grey[400];
