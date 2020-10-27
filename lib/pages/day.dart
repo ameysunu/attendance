@@ -100,7 +100,10 @@ class StatusBar extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10.0),
               child: Text(
                 group,
-                style: TextStyle(fontFamily: 'OpenSans SemiBold', fontSize: 20),
+                style: TextStyle(
+                    fontFamily: 'OpenSans SemiBold',
+                    fontSize: 20,
+                    color: getColor(status)),
               ),
             ),
             Padding(
@@ -114,7 +117,8 @@ class StatusBar extends StatelessWidget {
                     style: TextStyle(
                         fontFamily: 'OpenSans SemiBold',
                         fontSize: 20,
-                        fontWeight: FontWeight.bold),
+                        fontWeight: FontWeight.bold,
+                        color: getColor(status)),
                   ),
                   Text(
                     status,
@@ -126,7 +130,9 @@ class StatusBar extends StatelessWidget {
                   Text(
                     totalMark,
                     style: TextStyle(
-                        fontFamily: 'OpenSans SemiBold', fontSize: 20),
+                        fontFamily: 'OpenSans SemiBold',
+                        fontSize: 20,
+                        color: getColor(status)),
                   ),
                 ],
               ),
