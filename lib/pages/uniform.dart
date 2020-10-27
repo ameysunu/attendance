@@ -18,12 +18,12 @@ class _UniformState extends State<Uniform> {
   var now = new DateTime.now();
 
   String shoe, pant, shirt, skirt, tye;
-  int total;
+  // int total;
 
   @override
   Widget build(BuildContext context) {
     void calcSum() {
-      total = int.parse(shirt) +
+      int total = int.parse(shirt) +
           int.parse(skirt) +
           int.parse(shoe) +
           int.parse(pant) +
@@ -31,6 +31,7 @@ class _UniformState extends State<Uniform> {
       setState(() {
         finalMarks = total.toString();
       });
+      print(finalMarks);
     }
 
     return Scaffold(
@@ -296,20 +297,19 @@ class _UniformState extends State<Uniform> {
                         'Tie': tye,
                       });
 
+                      // FirebaseFirestore.instance
+                      // .collection("day")
+                      // .doc(widget.id)
+                      // .update({'totalMark':"${}"});
+                      calcSum();
+
                       FirebaseFirestore.instance
                           .collection("day")
                           .doc(widget.id)
                           .update({
                         'totalMark': finalMarks,
                       });
-
-                      // FirebaseFirestore.instance
-                      // .collection("day")
-                      // .doc(widget.id)
-                      // .update({'totalMark':"${}"});
-
                       Navigator.pop(context);
-                      calcSum();
                     },
                     child: Text(
                       '提交',

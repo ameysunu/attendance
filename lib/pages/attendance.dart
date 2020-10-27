@@ -234,7 +234,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                     'name': widget.name,
                     'group': widget.group,
                     "status": dropdownValue,
-                    "totalMark": "",
+                    "totalMark": "0",
                     "date": "${now.day}/${now.month}/${now.year}",
                   });
                 },
