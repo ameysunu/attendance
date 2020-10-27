@@ -296,7 +296,6 @@ class _UniformState extends State<Uniform> {
                         'Pant': pant,
                         'Tie': tye,
                       });
-
                       // FirebaseFirestore.instance
                       // .collection("day")
                       // .doc(widget.id)

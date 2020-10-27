@@ -21,7 +21,7 @@ class _DayState extends State<Day> {
           title: Column(
             children: [
               Padding(
-                padding: const EdgeInsets.only(top: 20.0),
+                padding: const EdgeInsets.only(top: 10.0),
                 child: Text(
                   '當天',
                   style: TextStyle(
@@ -30,16 +30,16 @@ class _DayState extends State<Day> {
                   ),
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: Text(
-                  "${currentDate.day}/${currentDate.month}/${currentDate.year}",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'OpenSans SemiBold'),
-                ),
-              )
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 10.0),
+              //   child: Text(
+              //     "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+              //     style: TextStyle(
+              //         color: Colors.black,
+              //         fontWeight: FontWeight.normal,
+              //         fontFamily: 'OpenSans SemiBold'),
+              //   ),
+              // )
             ],
           ),
           elevation: 0,
