@@ -176,6 +176,7 @@ class _AccountState extends State<Account> {
                   padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
                   onPressed: () {
                     signOut();
+                    Navigator.pop(context);
                     Navigator.pushReplacement(context,
                         MaterialPageRoute(builder: (context) => Login()));
                   },
