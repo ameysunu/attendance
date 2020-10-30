@@ -1,3 +1,4 @@
+import 'package:boysbrigade/pages/group.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
@@ -50,86 +51,92 @@ class _HalfYearState extends State<HalfYear> {
                   mainAxisSpacing: 30,
                   crossAxisCount: 2,
                   childAspectRatio: _aspectRatio),
-              itemBuilder: (context, int index) => Container(
-                height: 280.0,
-                padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Text(
-                      groupUsers[index].data()['group'],
-                      style: TextStyle(
-                        color: Colors.indigo[900],
-                        fontSize: 35,
-                        fontFamily: "OpenSans Regular",
-                        fontWeight: FontWeight.w600,
+              itemBuilder: (context, int index) => InkWell(
+                child: Container(
+                  height: 280.0,
+                  padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      Text(
+                        groupUsers[index].data()['group'],
+                        style: TextStyle(
+                          color: Colors.indigo[900],
+                          fontSize: 35,
+                          fontFamily: "OpenSans Regular",
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                    ),
-                    SizedBox(
-                      height: 30,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '出席率',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontFamily: "OpenSans Regular",
-                            fontWeight: FontWeight.w600,
+                      SizedBox(
+                        height: 30,
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            '出席率',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontFamily: "OpenSans Regular",
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 15,
-                          height: 40,
-                        ),
-                        Text(
-                          '制服', //uniform
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 15,
-                            fontWeight: FontWeight.w600,
-                            fontFamily: "OpenSans Regular",
+                          SizedBox(
+                            width: 15,
+                            height: 40,
                           ),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Text(
-                          '13%',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
+                          Text(
+                            '制服', //uniform
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 15,
+                              fontWeight: FontWeight.w600,
+                              fontFamily: "OpenSans Regular",
+                            ),
                           ),
-                        ),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          '40%',
-                          style: TextStyle(
-                            color: Colors.black,
-                            fontSize: 25,
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: <Widget>[
+                          Text(
+                            '13%',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
+                            ),
                           ),
-                        ),
-                      ],
-                    ),
-                  ],
+                          SizedBox(
+                            width: 5,
+                          ),
+                          Text(
+                            '40%',
+                            style: TextStyle(
+                              color: Colors.black,
+                              fontSize: 25,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ],
+                  ),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withOpacity(0.1),
+                        blurRadius: 3,
+                        offset: Offset(8, 5), // changes position of shadow
+                      ),
+                    ],
+                  ),
                 ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(20),
-                  color: Colors.white,
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.black.withOpacity(0.1),
-                      blurRadius: 3,
-                      offset: Offset(8, 5), // changes position of shadow
-                    ),
-                  ],
-                ),
+                onTap: () {
+                  Navigator.push(context,
+                      MaterialPageRoute(builder: (context) => Group()));
+                },
               ),
             );
           } else {
