@@ -142,6 +142,7 @@ class _HalfYearState extends State<HalfYear> {
                                 name: groupUsers[index].data()['name'],
                                 date: groupUsers[index].data()['date'],
                                 status: groupUsers[index].data()['status'],
+                                total: groupUsers[index].data()['totalMark'],
                                 id: widget.id,
                               )));
                 },
