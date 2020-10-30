@@ -134,8 +134,16 @@ class _HalfYearState extends State<HalfYear> {
                   ),
                 ),
                 onTap: () {
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => Group()));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => Group(
+                                group: groupUsers[index].data()['group'],
+                                name: groupUsers[index].data()['name'],
+                                date: groupUsers[index].data()['date'],
+                                status: groupUsers[index].data()['status'],
+                                id: widget.id,
+                              )));
                 },
               ),
             );
