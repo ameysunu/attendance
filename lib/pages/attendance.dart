@@ -226,7 +226,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                       FirebaseFirestore.instance.doc("student/${widget.id}");
                   subscription =
                       documentReference.snapshots().listen((datasnapshot) {
-                    if (datasnapshot.data.call().containsValue(
+                    if (datasnapshot.data()['attendance'].call().containsValue(
                         "${currentDate.day}/${currentDate.month}/${currentDate.year}")) {
                       print("error");
                     } else {
