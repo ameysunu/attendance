@@ -223,7 +223,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                   // });
                   final DocumentReference documentReference = FirebaseFirestore
                       .instance
-                      .doc("student/${widget.id}/Nova");
+                      .doc("student/${widget.id}/attendance");
                   subscription =
                       documentReference.snapshots().listen((datasnapshot) {
                     if (datasnapshot.data.containsValue(
