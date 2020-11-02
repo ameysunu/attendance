@@ -223,12 +223,16 @@ class _AttendanceTileState extends State<AttendanceTile> {
                   // });
 
                   final DocumentReference documentReference =
-                      FirebaseFirestore.instance.doc("student/${widget.id}");
+                      FirebaseFirestore.instance.doc("day/${widget.id}");
                   subscription =
                       documentReference.snapshots().listen((datasnapshot) {
-                    if (datasnapshot.data()['attendance'].call().containsValue(
-                        "${currentDate.day}/${currentDate.month}/${currentDate.year}")) {
+                    if (datasnapshot.data()['date'] ==
+                        "${currentDate.day}/${currentDate.month}/${currentDate.year}") {
                       print("error");
+                      return SnackBar(
+                        content:
+                            Text("Oops, you've already filled the attendance!"),
+                      );
                     } else {
                       FirebaseFirestore.instance
                           .collection("student")
