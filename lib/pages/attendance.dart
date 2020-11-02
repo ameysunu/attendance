@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -6,6 +7,7 @@ import 'day.dart';
 
 final firestoreInstance = FirebaseFirestore.instance;
 var currentDate = new DateTime.now();
+StreamSubscription<DocumentSnapshot> subscription;
 
 class Attendance extends StatefulWidget {
   @override
@@ -219,23 +221,37 @@ class _AttendanceTileState extends State<AttendanceTile> {
                   //   'date': "${now.day}/${now.month}/${now.year}",
                   //   'studentAttendance': dropdownValue,
                   // });
-                  FirebaseFirestore.instance
-                      .collection("student")
-                      .doc(widget.id)
-                      .collection("attendance")
-                      .limit(1)
-                      .get()
-                      .then((value) => add());
-                  //  for day
-                  FirebaseFirestore.instance
-                      .collection("day")
-                      .doc(widget.id)
-                      .set({
-                    'name': widget.name,
-                    'group': widget.group,
-                    "status": dropdownValue,
-                    "totalMark": "0",
-                    "date": "${now.day}/${now.month}/${now.year}",
+                  final DocumentReference documentReference = FirebaseFirestore
+                      .instance
+                      .doc("student/${widget.id}/Nova");
+                  subscription =
+                      documentReference.snapshots().listen((datasnapshot) {
+                    if (datasnapshot.data.containsValue(
+                        "${currentDate.day}/${currentDate.month}/${currentDate.year}")) {
+                      return SnackBar(
+                        content: Text(
+                            "Oops! Looks, like you have already posted attendance for today."),
+                      );
+                    } else {
+                      FirebaseFirestore.instance
+                          .collection("student")
+                          .doc(widget.id)
+                          .collection("attendance")
+                          .limit(1)
+                          .get()
+                          .then((value) => add());
+                      //  for day
+                      FirebaseFirestore.instance
+                          .collection("day")
+                          .doc(widget.id)
+                          .set({
+                        'name': widget.name,
+                        'group': widget.group,
+                        "status": dropdownValue,
+                        "totalMark": "0",
+                        "date": "${now.day}/${now.month}/${now.year}",
+                      });
+                    }
                   });
                 },
                 items: attendance.map((attend) {
