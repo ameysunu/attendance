@@ -223,17 +223,20 @@ class _AttendanceTileState extends State<AttendanceTile> {
                   // });
 
                   final DocumentReference documentReference =
-                      FirebaseFirestore.instance.doc("day/${widget.id}");
+                      FirebaseFirestore.instance.doc("data/${widget.id}");
                   subscription =
                       documentReference.snapshots().listen((datasnapshot) {
+                    print(datasnapshot.data()['date']);
                     if (datasnapshot.data()['date'] ==
-                        "${currentDate.day}/${currentDate.month}/${currentDate.year}") {
+                        "${now.day}/${now.month}/${now.year}") {
                       print("error");
                       return SnackBar(
                         content:
                             Text("Oops, you've already filled the attendance!"),
                       );
-                    } else {
+                    } else if (datasnapshot.data()['date'] !=
+                        "${now.day}/${now.month}/${now.year}") {
+                      print("need to add");
                       FirebaseFirestore.instance
                           .collection("student")
                           .doc(widget.id)
@@ -251,6 +254,16 @@ class _AttendanceTileState extends State<AttendanceTile> {
                         'group': widget.group,
                         "status": dropdownValue,
                         "totalMark": "0",
+                        "date": "${now.day}/${now.month}/${now.year}",
+                      });
+                      //check DB
+                      FirebaseFirestore.instance
+                          .collection("data")
+                          .doc(widget.id)
+                          .set({
+                        'name': widget.name,
+                        'group': widget.group,
+                        "status": dropdownValue,
                         "date": "${now.day}/${now.month}/${now.year}",
                       });
                     }
