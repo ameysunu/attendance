@@ -230,7 +230,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                     if (datasnapshot.data()['date'] ==
                         "${now.day}/${now.month}/${now.year}") {
                       print("error");
-                      return _errorAlert(context);
+                      //return _errorAlert(context);
                     } else if (datasnapshot.data()['date'] !=
                         "${now.day}/${now.month}/${now.year}") {
                       print("need to add");
@@ -281,15 +281,15 @@ class _AttendanceTileState extends State<AttendanceTile> {
   }
 }
 
-void _errorAlert(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            "Oops, you have filled in attendance for today!",
-            style: TextStyle(fontFamily: 'OpenSans SemiBold'),
-          ),
-        );
-      });
-}
+// void _errorAlert(BuildContext context) {
+//   showDialog(
+//       context: context,
+//       builder: (context) {
+//         return AlertDialog(
+//           title: Text(
+//             "Oops, you have filled in attendance for today!",
+//             style: TextStyle(fontFamily: 'OpenSans SemiBold'),
+//           ),
+//         );
+//       });
+// }
