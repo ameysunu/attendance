@@ -11,13 +11,35 @@ class HalfYear extends StatefulWidget {
 }
 
 class _HalfYearState extends State<HalfYear> {
+  String dropDownvalue = "CS";
   @override
   Widget build(BuildContext context) {
     var _screenWidth = MediaQuery.of(context).size.width;
     var _width = (_screenWidth - 20) / 2;
     var _aspectRatio = _width / 250;
+
     return Scaffold(
       appBar: AppBar(
+        actions: <Widget>[
+          Padding(
+            padding: const EdgeInsets.only(right: 20.0),
+            child: DropdownButton<String>(
+              value: dropDownvalue,
+              onChanged: (String newValue) {
+                setState(() {
+                  dropDownvalue = newValue;
+                });
+              },
+              items: <String>['CS', 'JS']
+                  .map<DropdownMenuItem<String>>((String value) {
+                return DropdownMenuItem<String>(
+                  value: value,
+                  child: Text(value),
+                );
+              }).toList(),
+            ),
+          ),
+        ],
         automaticallyImplyLeading: false,
         title: Text(
           '上半年', //half year
