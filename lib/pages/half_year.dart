@@ -34,10 +34,13 @@ class _HalfYearState extends State<HalfYear> {
                     print('CS');
                     newStream = FirebaseFirestore.instance
                         .collection('day')
+                        .orderBy('group')
                         .snapshots();
                   } else if (dropDownvalue == 'JS') {
-                    newStream =
-                        FirebaseFirestore.instance.collection('js').snapshots();
+                    newStream = FirebaseFirestore.instance
+                        .collection('js')
+                        .orderBy('group')
+                        .snapshots();
                   }
                 });
               },
