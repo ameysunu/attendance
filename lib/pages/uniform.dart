@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'half_year.dart' as halfyear;
 
 var currentDate = new DateTime.now();
 String finalMarks = "0";
@@ -277,39 +278,68 @@ class _UniformState extends State<Uniform> {
                     padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
                     onPressed: () {
                       setState(() {});
-                      FirebaseFirestore.instance
-                          .collection("uniform")
-                          .doc(widget.id)
-                          .set({
-                        "name": widget.name,
-                        "group": widget.group,
-                      });
+                      if (halfyear.groupvalue == 'CS') {
+                        FirebaseFirestore.instance
+                            .collection("uniform")
+                            .doc(widget.id)
+                            .set({
+                          "name": widget.name,
+                          "group": widget.group,
+                        });
+                        FirebaseFirestore.instance
+                            .collection("student")
+                            .doc(widget.id)
+                            .collection("marks")
+                            .doc("update")
+                            .update({
+                          'Date': "${now.day}/${now.month}/${now.year}",
+                          'Shirt': shirt,
+                          'Skirt': pant,
+                          'Shoe': belt,
+                          'Pant': shoe,
+                          'Tie': other,
+                        });
 
-                      FirebaseFirestore.instance
-                          .collection("student")
-                          .doc(widget.id)
-                          .collection("marks")
-                          .doc("update")
-                          .update({
-                        'Date': "${now.day}/${now.month}/${now.year}",
-                        'Shirt': shirt,
-                        'Skirt': pant,
-                        'Shoe': belt,
-                        'Pant': shoe,
-                        'Tie': other,
-                      });
-                      // FirebaseFirestore.instance
-                      // .collection("day")
-                      // .doc(widget.id)
-                      // .update({'totalMark':"${}"});
-                      calcSum();
+                        calcSum();
 
-                      FirebaseFirestore.instance
-                          .collection("day")
-                          .doc(widget.id)
-                          .update({
-                        'totalMark': finalMarks,
-                      });
+                        FirebaseFirestore.instance
+                            .collection("day")
+                            .doc(widget.id)
+                            .update({
+                          'totalMark': finalMarks,
+                        });
+                      } else if (halfyear.groupvalue == 'JS') {
+                        FirebaseFirestore.instance
+                            .collection('uniformjs')
+                            .doc(widget.id)
+                            .set({
+                          "name": widget.name,
+                          "group": widget.group,
+                        });
+
+                        FirebaseFirestore.instance
+                            .collection("attendancejs")
+                            .doc(widget.id)
+                            .collection("marks")
+                            .doc("update")
+                            .update({
+                          'Date': "${now.day}/${now.month}/${now.year}",
+                          'Shirt': shirt,
+                          'Skirt': pant,
+                          'Shoe': belt,
+                          'Pant': shoe,
+                          'Tie': other,
+                        });
+
+                        calcSum();
+
+                        FirebaseFirestore.instance
+                            .collection("dayjs")
+                            .doc(widget.id)
+                            .update({
+                          'totalMark': finalMarks,
+                        });
+                      }
                       Navigator.pop(context);
                     },
                     child: Text(
