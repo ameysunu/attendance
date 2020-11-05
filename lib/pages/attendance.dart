@@ -301,16 +301,16 @@ class _AttendanceTileState extends State<AttendanceTile> {
                           'studentAttendance': dropdownValue,
                         });
                         //  for day
-                        // FirebaseFirestore.instance
-                        //     .collection("day")
-                        //     .doc(widget.id)
-                        //     .set({
-                        //   'name': widget.name,
-                        //   'group': widget.group,
-                        //   "status": dropdownValue,
-                        //   "totalMark": "0",
-                        //   "date": "${now.day}/${now.month}/${now.year}",
-                        // });
+                        FirebaseFirestore.instance
+                            .collection("dayjs")
+                            .doc(widget.id)
+                            .set({
+                          'name': widget.name,
+                          'group': widget.group,
+                          "status": dropdownValue,
+                          "totalMark": "0",
+                          "date": "${now.day}/${now.month}/${now.year}",
+                        });
                         //check DB
                         FirebaseFirestore.instance
                             .collection("datajs")

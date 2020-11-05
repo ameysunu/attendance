@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'uniform.dart';
+import 'half_year.dart' as halfyear;
 
 class Day extends StatefulWidget {
   @override
@@ -8,6 +9,22 @@ class Day extends StatefulWidget {
 }
 
 class _DayState extends State<Day> {
+  @override
+  void initState() {
+    super.initState();
+    if (halfyear.groupvalue == 'CS') {
+      halfyear.newStream = FirebaseFirestore.instance
+          .collection('day')
+          .orderBy('group')
+          .snapshots();
+    } else if (halfyear.groupvalue == 'JS') {
+      halfyear.newStream = FirebaseFirestore.instance
+          .collection('dayjs')
+          .orderBy('group')
+          .snapshots();
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -39,10 +56,7 @@ class _DayState extends State<Day> {
         child: ListView(
           children: [
             StreamBuilder<QuerySnapshot>(
-                stream: FirebaseFirestore.instance
-                    .collection("day")
-                    .orderBy("group")
-                    .snapshots(),
+                stream: halfyear.newStream,
                 builder: (context, snapshot) {
                   if (snapshot.hasError) {
                     return Text("Something went wrong");

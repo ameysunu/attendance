@@ -17,10 +17,17 @@ class _HalfYearState extends State<HalfYear> {
   @override
   void initState() {
     super.initState();
-    newStream = FirebaseFirestore.instance
-        .collection('day')
-        .orderBy('group')
-        .snapshots();
+    if (groupvalue == 'CS') {
+      newStream = FirebaseFirestore.instance
+          .collection('day')
+          .orderBy('group')
+          .snapshots();
+    } else if (groupvalue == 'JS') {
+      newStream = FirebaseFirestore.instance
+          .collection('js')
+          .orderBy('group')
+          .snapshots();
+    }
   }
 
   @override
