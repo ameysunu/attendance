@@ -2,6 +2,9 @@ import 'package:boysbrigade/pages/group.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
+String groupvalue = "CS";
+Stream<QuerySnapshot> newStream;
+
 class HalfYear extends StatefulWidget {
   final String id;
 
@@ -11,9 +14,6 @@ class HalfYear extends StatefulWidget {
 }
 
 class _HalfYearState extends State<HalfYear> {
-  String dropDownvalue = "CS";
-  Stream<QuerySnapshot> newStream;
-
   @override
   void initState() {
     super.initState();
@@ -35,18 +35,18 @@ class _HalfYearState extends State<HalfYear> {
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
             child: DropdownButton<String>(
-              value: dropDownvalue,
+              value: groupvalue,
               onChanged: (String newValue) {
                 setState(() {
-                  dropDownvalue = newValue;
+                  groupvalue = newValue;
 
-                  if (dropDownvalue == 'CS') {
+                  if (groupvalue == 'CS') {
                     print('CS');
                     newStream = FirebaseFirestore.instance
                         .collection('day')
                         .orderBy('group')
                         .snapshots();
-                  } else if (dropDownvalue == 'JS') {
+                  } else if (groupvalue == 'JS') {
                     newStream = FirebaseFirestore.instance
                         .collection('js')
                         .orderBy('group')

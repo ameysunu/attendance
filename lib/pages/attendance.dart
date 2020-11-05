@@ -4,6 +4,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'uniform.dart';
 import 'day.dart';
+import 'half_year.dart' as halfyear;
 
 final firestoreInstance = FirebaseFirestore.instance;
 var currentDate = new DateTime.now();
@@ -24,6 +25,22 @@ class _AttendanceState extends State<Attendance> {
       child: Text(string),
       value: value,
     );
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    if (halfyear.groupvalue == 'CS') {
+      halfyear.newStream = FirebaseFirestore.instance
+          .collection('student')
+          .orderBy('group')
+          .snapshots();
+    } else if (halfyear.groupvalue == 'JS') {
+      halfyear.newStream = FirebaseFirestore.instance
+          .collection('attendancejs')
+          .orderBy('group')
+          .snapshots();
+    }
   }
 
   @override
@@ -70,10 +87,7 @@ class _AttendanceState extends State<Attendance> {
               child: ListView(
                 children: [
                   StreamBuilder<QuerySnapshot>(
-                      stream: FirebaseFirestore.instance
-                          .collection("student")
-                          .orderBy("group")
-                          .snapshots(),
+                      stream: halfyear.newStream,
                       builder: (context, snapshot) {
                         if (snapshot.hasError) {
                           return Text("Something went wrong");
@@ -221,50 +235,95 @@ class _AttendanceTileState extends State<AttendanceTile> {
                   //   'date': "${now.day}/${now.month}/${now.year}",
                   //   'studentAttendance': dropdownValue,
                   // });
-
-                  final DocumentReference documentReference =
-                      FirebaseFirestore.instance.doc("data/${widget.id}");
-                  subscription =
-                      documentReference.snapshots().listen((datasnapshot) {
-                    print(datasnapshot.data()['date']);
-                    if (datasnapshot.data()['date'] ==
-                        "${now.day}/${now.month}/${now.year}") {
-                      print("error");
-                      //return _errorAlert(context);
-                    } else if (datasnapshot.data()['date'] !=
-                        "${now.day}/${now.month}/${now.year}") {
-                      print("need to add");
-                      FirebaseFirestore.instance
-                          .collection("student")
-                          .doc(widget.id)
-                          .collection("attendance")
-                          .add({
-                        'date': "${now.day}/${now.month}/${now.year}",
-                        'studentAttendance': dropdownValue,
-                      });
-                      //  for day
-                      FirebaseFirestore.instance
-                          .collection("day")
-                          .doc(widget.id)
-                          .set({
-                        'name': widget.name,
-                        'group': widget.group,
-                        "status": dropdownValue,
-                        "totalMark": "0",
-                        "date": "${now.day}/${now.month}/${now.year}",
-                      });
-                      //check DB
-                      FirebaseFirestore.instance
-                          .collection("data")
-                          .doc(widget.id)
-                          .set({
-                        'name': widget.name,
-                        'group': widget.group,
-                        "status": dropdownValue,
-                        "date": "${now.day}/${now.month}/${now.year}",
-                      });
-                    }
-                  });
+                  if (halfyear.groupvalue == 'CS') {
+                    final DocumentReference documentReference =
+                        FirebaseFirestore.instance.doc("data/${widget.id}");
+                    subscription =
+                        documentReference.snapshots().listen((datasnapshot) {
+                      print(datasnapshot.data()['date']);
+                      if (datasnapshot.data()['date'] ==
+                          "${now.day}/${now.month}/${now.year}") {
+                        print("error");
+                        //return _errorAlert(context);
+                      } else if (datasnapshot.data()['date'] !=
+                          "${now.day}/${now.month}/${now.year}") {
+                        print("need to add");
+                        FirebaseFirestore.instance
+                            .collection("student")
+                            .doc(widget.id)
+                            .collection("attendance")
+                            .add({
+                          'date': "${now.day}/${now.month}/${now.year}",
+                          'studentAttendance': dropdownValue,
+                        });
+                        //  for day
+                        FirebaseFirestore.instance
+                            .collection("day")
+                            .doc(widget.id)
+                            .set({
+                          'name': widget.name,
+                          'group': widget.group,
+                          "status": dropdownValue,
+                          "totalMark": "0",
+                          "date": "${now.day}/${now.month}/${now.year}",
+                        });
+                        //check DB
+                        FirebaseFirestore.instance
+                            .collection("data")
+                            .doc(widget.id)
+                            .set({
+                          'name': widget.name,
+                          'group': widget.group,
+                          "status": dropdownValue,
+                          "date": "${now.day}/${now.month}/${now.year}",
+                        });
+                      }
+                    });
+                  } else if (halfyear.groupvalue == 'JS') {
+                    final DocumentReference documentReference =
+                        FirebaseFirestore.instance.doc("datajs/${widget.id}");
+                    subscription =
+                        documentReference.snapshots().listen((datasnapshot) {
+                      print(datasnapshot.data()['date']);
+                      if (datasnapshot.data()['date'] ==
+                          "${now.day}/${now.month}/${now.year}") {
+                        print("error");
+                        //return _errorAlert(context);
+                      } else if (datasnapshot.data()['date'] !=
+                          "${now.day}/${now.month}/${now.year}") {
+                        print("need to add");
+                        FirebaseFirestore.instance
+                            .collection("attendancejs")
+                            .doc(widget.id)
+                            .collection("attendance")
+                            .add({
+                          'date': "${now.day}/${now.month}/${now.year}",
+                          'studentAttendance': dropdownValue,
+                        });
+                        //  for day
+                        // FirebaseFirestore.instance
+                        //     .collection("day")
+                        //     .doc(widget.id)
+                        //     .set({
+                        //   'name': widget.name,
+                        //   'group': widget.group,
+                        //   "status": dropdownValue,
+                        //   "totalMark": "0",
+                        //   "date": "${now.day}/${now.month}/${now.year}",
+                        // });
+                        //check DB
+                        FirebaseFirestore.instance
+                            .collection("datajs")
+                            .doc(widget.id)
+                            .set({
+                          'name': widget.name,
+                          'group': widget.group,
+                          "status": dropdownValue,
+                          "date": "${now.day}/${now.month}/${now.year}",
+                        });
+                      }
+                    });
+                  }
                 },
                 items: attendance.map((attend) {
                   return DropdownMenuItem(
