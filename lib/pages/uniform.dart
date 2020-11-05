@@ -23,7 +23,7 @@ class _UniformState extends State<Uniform> {
 
   @override
   Widget build(BuildContext context) {
-    void calcSum() {
+    void calcCS() {
       int total = int.parse(shirt) +
           int.parse(pant) +
           int.parse(belt) +
@@ -35,250 +35,263 @@ class _UniformState extends State<Uniform> {
       print(finalMarks);
     }
 
-    return Scaffold(
-      backgroundColor: Colors.blueGrey[50],
-      appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
-        child: AppBar(
-          centerTitle: true,
-          iconTheme: IconThemeData(color: Colors.black),
-          title: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Text(
-                  '制服',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: Text(
-                  "${currentDate.day}/${currentDate.month}/${currentDate.year}",
-                  style: TextStyle(
+    void calcJS() {
+      int total = int.parse(shirt) +
+          int.parse(pant) +
+          int.parse(shoe) +
+          int.parse(other);
+      setState(() {
+        finalMarks = total.toString();
+      });
+      print(finalMarks);
+    }
+
+    if (halfyear.groupvalue == 'CS') {
+      return Scaffold(
+        backgroundColor: Colors.blueGrey[50],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70.0),
+          child: AppBar(
+            centerTitle: true,
+            iconTheme: IconThemeData(color: Colors.black),
+            title: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Text(
+                    '制服',
+                    style: TextStyle(
                       color: Colors.black,
                       fontWeight: FontWeight.normal,
-                      fontFamily: 'OpenSans SemiBold'),
-                ),
-              ),
-            ],
-          ),
-          elevation: 0,
-          backgroundColor: Colors.white,
-        ),
-      ),
-      body: Container(
-        child: Column(
-          children: [
-            Expanded(
-              child: ListView(
-                padding: EdgeInsets.all(20),
-                children: <Widget>[
-                  Container(
-                    padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
-                    child: Column(
-                      children: [
-                        Text(
-                          widget.name,
-                          style: TextStyle(
-                            fontSize: 30,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "OpenSans Regular",
-                          ),
-                        ),
-                        Text(
-                          widget.group,
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontWeight: FontWeight.bold,
-                            fontFamily: "OpenSans Regular",
-                          ),
-                        ),
-                      ],
                     ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Container(
-                      padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                        fontFamily: 'OpenSans SemiBold'),
+                  ),
+                ),
+              ],
+            ),
+            elevation: 0,
+            backgroundColor: Colors.white,
+          ),
+        ),
+        body: Container(
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.all(20),
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Column(
                         children: [
                           Text(
-                            '制服',
+                            widget.name,
                             style: TextStyle(
-                              fontSize: 25,
-                              fontFamily: "OpenSans SemiBold",
+                              fontSize: 30,
                               fontWeight: FontWeight.bold,
+                              fontFamily: "OpenSans Regular",
                             ),
                           ),
-                          SizedBox(
-                            width: 50,
+                          Text(
+                            widget.group,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "OpenSans Regular",
+                            ),
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 8.0),
-                            child: Text(
-                              "分數",
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '制服',
                               style: TextStyle(
                                 fontSize: 25,
                                 fontFamily: "OpenSans SemiBold",
                                 fontWeight: FontWeight.bold,
                               ),
                             ),
-                          )
-                        ],
+                            SizedBox(
+                              width: 50,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Text(
+                                "分數",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontFamily: "OpenSans SemiBold",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Column(
-                    children: [
-                      ListTile(
-                        title: Text(
-                          '襯衫',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: "OpenSans Regular",
+                    Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            '襯衫',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: shirt,
+                            onChanged: (val) {
+                              setState(() {
+                                shirt = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
                           ),
                         ),
-                        trailing: DropdownButton(
-                          hint: Text("選擇"),
-                          value: shirt,
-                          onChanged: (val) {
-                            setState(() {
-                              shirt = val;
-                            });
-                          },
-                          items: uniform.map((attend) {
-                            return DropdownMenuItem(
-                              child: Text("${attend}"),
-                              value: attend,
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      ListTile(
-                        title: Text(
-                          '裙/褲',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: "OpenSans Regular",
+                        ListTile(
+                          title: Text(
+                            '裙/褲',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: pant,
+                            onChanged: (val) {
+                              setState(() {
+                                pant = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
                           ),
                         ),
-                        trailing: DropdownButton(
-                          hint: Text("選擇"),
-                          value: pant,
-                          onChanged: (val) {
-                            setState(() {
-                              pant = val;
-                            });
-                          },
-                          items: uniform.map((attend) {
-                            return DropdownMenuItem(
-                              child: Text("${attend}"),
-                              value: attend,
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      ListTile(
-                        title: Text(
-                          '皮帶',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: "OpenSans Regular",
+                        ListTile(
+                          title: Text(
+                            '皮帶',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: belt,
+                            onChanged: (val) {
+                              setState(() {
+                                belt = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
                           ),
                         ),
-                        trailing: DropdownButton(
-                          hint: Text("選擇"),
-                          value: belt,
-                          onChanged: (val) {
-                            setState(() {
-                              belt = val;
-                            });
-                          },
-                          items: uniform.map((attend) {
-                            return DropdownMenuItem(
-                              child: Text("${attend}"),
-                              value: attend,
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      ListTile(
-                        title: Text(
-                          '皮鞋',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: "OpenSans Regular",
+                        ListTile(
+                          title: Text(
+                            '皮鞋',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: shoe,
+                            onChanged: (val) {
+                              setState(() {
+                                shoe = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
                           ),
                         ),
-                        trailing: DropdownButton(
-                          hint: Text("選擇"),
-                          value: shoe,
-                          onChanged: (val) {
-                            setState(() {
-                              shoe = val;
-                            });
-                          },
-                          items: uniform.map((attend) {
-                            return DropdownMenuItem(
-                              child: Text("${attend}"),
-                              value: attend,
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                      ListTile(
-                        title: Text(
-                          '其他',
-                          style: TextStyle(
-                            fontSize: 20,
-                            fontFamily: "OpenSans Regular",
+                        ListTile(
+                          title: Text(
+                            '其他',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: other,
+                            onChanged: (val) {
+                              setState(() {
+                                other = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
                           ),
                         ),
-                        trailing: DropdownButton(
-                          hint: Text("選擇"),
-                          value: other,
-                          onChanged: (val) {
-                            setState(() {
-                              other = val;
-                            });
-                          },
-                          items: uniform.map((attend) {
-                            return DropdownMenuItem(
-                              child: Text("${attend}"),
-                              value: attend,
-                            );
-                          }).toList(),
-                        ),
-                      ),
-                    ],
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                ],
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Container(
-              color: Colors.white,
-              child: Padding(
-                padding: const EdgeInsets.all(10.0),
-                child: Align(
-                  alignment: FractionalOffset.bottomCenter,
-                  child: RaisedButton(
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
-                    ),
-                    color: Colors.blueGrey[900],
-                    textColor: Colors.white,
-                    padding: EdgeInsets.symmetric(vertical: 8, horizontal: 120),
-                    onPressed: () {
-                      setState(() {});
-                      if (halfyear.groupvalue == 'CS') {
+              Container(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      color: Colors.blueGrey[900],
+                      textColor: Colors.white,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 120),
+                      onPressed: () {
+                        setState(() {});
+
                         FirebaseFirestore.instance
                             .collection("uniform")
                             .doc(widget.id)
@@ -294,13 +307,13 @@ class _UniformState extends State<Uniform> {
                             .update({
                           'Date': "${now.day}/${now.month}/${now.year}",
                           'Shirt': shirt,
-                          'Skirt': pant,
-                          'Shoe': belt,
-                          'Pant': shoe,
-                          'Tie': other,
+                          'Pant': pant,
+                          'Belt': belt,
+                          'Shoe': shoe,
+                          'Other': other,
                         });
 
-                        calcSum();
+                        calcCS();
 
                         FirebaseFirestore.instance
                             .collection("day")
@@ -308,7 +321,244 @@ class _UniformState extends State<Uniform> {
                             .update({
                           'totalMark': finalMarks,
                         });
-                      } else if (halfyear.groupvalue == 'JS') {
+
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        '提交',
+                        style: TextStyle(fontSize: 20),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+      );
+    }
+    //JS
+    else if (halfyear.groupvalue == 'JS') {
+      return Scaffold(
+        backgroundColor: Colors.blueGrey[50],
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(70.0),
+          child: AppBar(
+            centerTitle: true,
+            iconTheme: IconThemeData(color: Colors.black),
+            title: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
+                  child: Text(
+                    '制服',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10.0),
+                  child: Text(
+                    "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontWeight: FontWeight.normal,
+                        fontFamily: 'OpenSans SemiBold'),
+                  ),
+                ),
+              ],
+            ),
+            elevation: 0,
+            backgroundColor: Colors.white,
+          ),
+        ),
+        body: Container(
+          child: Column(
+            children: [
+              Expanded(
+                child: ListView(
+                  padding: EdgeInsets.all(20),
+                  children: <Widget>[
+                    Container(
+                      padding: EdgeInsets.fromLTRB(15, 0, 0, 0),
+                      child: Column(
+                        children: [
+                          Text(
+                            widget.name,
+                            style: TextStyle(
+                              fontSize: 30,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          Text(
+                            widget.group,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.bold,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Container(
+                        padding: EdgeInsets.fromLTRB(5, 0, 0, 0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              '制服',
+                              style: TextStyle(
+                                fontSize: 25,
+                                fontFamily: "OpenSans SemiBold",
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                            SizedBox(
+                              width: 50,
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(right: 8.0),
+                              child: Text(
+                                "分數",
+                                style: TextStyle(
+                                  fontSize: 25,
+                                  fontFamily: "OpenSans SemiBold",
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                    Column(
+                      children: [
+                        ListTile(
+                          title: Text(
+                            '襯衫',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: shirt,
+                            onChanged: (val) {
+                              setState(() {
+                                shirt = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            '裙/褲',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: pant,
+                            onChanged: (val) {
+                              setState(() {
+                                pant = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            '皮鞋',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: shoe,
+                            onChanged: (val) {
+                              setState(() {
+                                shoe = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                        ListTile(
+                          title: Text(
+                            '其他',
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontFamily: "OpenSans Regular",
+                            ),
+                          ),
+                          trailing: DropdownButton(
+                            hint: Text("選擇"),
+                            value: other,
+                            onChanged: (val) {
+                              setState(() {
+                                other = val;
+                              });
+                            },
+                            items: uniform.map((attend) {
+                              return DropdownMenuItem(
+                                child: Text("${attend}"),
+                                value: attend,
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
+              ),
+              Container(
+                color: Colors.white,
+                child: Padding(
+                  padding: const EdgeInsets.all(10.0),
+                  child: Align(
+                    alignment: FractionalOffset.bottomCenter,
+                    child: RaisedButton(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
+                      color: Colors.blueGrey[900],
+                      textColor: Colors.white,
+                      padding:
+                          EdgeInsets.symmetric(vertical: 8, horizontal: 120),
+                      onPressed: () {
+                        setState(() {});
                         FirebaseFirestore.instance
                             .collection('uniformjs')
                             .doc(widget.id)
@@ -325,13 +575,12 @@ class _UniformState extends State<Uniform> {
                             .update({
                           'Date': "${now.day}/${now.month}/${now.year}",
                           'Shirt': shirt,
-                          'Skirt': pant,
-                          'Shoe': belt,
-                          'Pant': shoe,
-                          'Tie': other,
+                          'Pant': pant,
+                          'Shoe': shoe,
+                          'Other': other,
                         });
 
-                        calcSum();
+                        calcJS();
 
                         FirebaseFirestore.instance
                             .collection("dayjs")
@@ -339,20 +588,21 @@ class _UniformState extends State<Uniform> {
                             .update({
                           'totalMark': finalMarks,
                         });
-                      }
-                      Navigator.pop(context);
-                    },
-                    child: Text(
-                      '提交',
-                      style: TextStyle(fontSize: 20),
+
+                        Navigator.pop(context);
+                      },
+                      child: Text(
+                        '提交',
+                        style: TextStyle(fontSize: 20),
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
-      ),
-    );
+      );
+    }
   }
 }
