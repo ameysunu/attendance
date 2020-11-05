@@ -12,6 +12,7 @@ class HalfYear extends StatefulWidget {
 
 class _HalfYearState extends State<HalfYear> {
   String dropDownvalue = "CS";
+  Stream<QuerySnapshot> newStream;
   @override
   Widget build(BuildContext context) {
     var _screenWidth = MediaQuery.of(context).size.width;
@@ -28,6 +29,16 @@ class _HalfYearState extends State<HalfYear> {
               onChanged: (String newValue) {
                 setState(() {
                   dropDownvalue = newValue;
+
+                  if (dropDownvalue == 'CS') {
+                    print('CS');
+                    newStream = FirebaseFirestore.instance
+                        .collection('day')
+                        .snapshots();
+                  } else if (dropDownvalue == 'JS') {
+                    newStream =
+                        FirebaseFirestore.instance.collection('js').snapshots();
+                  }
                 });
               },
               items: <String>['CS', 'JS']
@@ -54,17 +65,13 @@ class _HalfYearState extends State<HalfYear> {
       ),
       backgroundColor: Colors.blueGrey[50],
       body: StreamBuilder(
-        stream: FirebaseFirestore.instance
-            .collection('day')
-            .orderBy('group')
-            .snapshots(),
+        stream: newStream,
         builder: (BuildContext context, AsyncSnapshot snapshot) {
           var totalgroupCount = 0;
           List<DocumentSnapshot> groupUsers;
           if (snapshot.hasData) {
             groupUsers = snapshot.data.documents;
             totalgroupCount = groupUsers.length;
-
             return GridView.builder(
               padding: const EdgeInsets.all(30),
               itemCount: snapshot.data.documents.length,
