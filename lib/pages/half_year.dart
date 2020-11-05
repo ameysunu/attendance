@@ -13,6 +13,16 @@ class HalfYear extends StatefulWidget {
 class _HalfYearState extends State<HalfYear> {
   String dropDownvalue = "CS";
   Stream<QuerySnapshot> newStream;
+
+  @override
+  void initState() {
+    super.initState();
+    newStream = FirebaseFirestore.instance
+        .collection('day')
+        .orderBy('group')
+        .snapshots();
+  }
+
   @override
   Widget build(BuildContext context) {
     var _screenWidth = MediaQuery.of(context).size.width;
