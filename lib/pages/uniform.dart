@@ -303,8 +303,7 @@ class _UniformState extends State<Uniform> {
                             .collection("student")
                             .doc(widget.id)
                             .collection("marks")
-                            .doc("update")
-                            .update({
+                            .add({
                           'Date': "${now.day}/${now.month}/${now.year}",
                           'Shirt': shirt,
                           'Pant': pant,
@@ -571,8 +570,7 @@ class _UniformState extends State<Uniform> {
                             .collection("attendancejs")
                             .doc(widget.id)
                             .collection("marks")
-                            .doc("update")
-                            .update({
+                            .add({
                           'Date': "${now.day}/${now.month}/${now.year}",
                           'Shirt': shirt,
                           'Pant': pant,
