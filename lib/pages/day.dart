@@ -149,18 +149,18 @@ class StatusBar extends StatelessWidget {
                         fontSize: 20,
                         color: getColor(status)),
                   ),
-                  IconButton(
-                    icon: Icon(Icons.edit),
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => Update(
-                                    name: name,
-                                    group: group,
-                                  )));
-                    },
-                  )
+                  // IconButton(
+                  //   icon: Icon(Icons.edit),
+                  //   onPressed: () {
+                  //     Navigator.push(
+                  //         context,
+                  //         MaterialPageRoute(
+                  //             builder: (context) => Update(
+                  //                   name: name,
+                  //                   group: group,
+                  //                 )));
+                  //   },
+                  // )
                 ],
               ),
             ),
