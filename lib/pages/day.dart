@@ -1,3 +1,4 @@
+import 'package:boysbrigade/pages/update.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'uniform.dart';
@@ -148,6 +149,18 @@ class StatusBar extends StatelessWidget {
                         fontSize: 20,
                         color: getColor(status)),
                   ),
+                  IconButton(
+                    icon: Icon(Icons.edit),
+                    onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => Update(
+                                    name: name,
+                                    group: group,
+                                  )));
+                    },
+                  )
                 ],
               ),
             ),
