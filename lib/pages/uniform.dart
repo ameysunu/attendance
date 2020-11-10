@@ -4,7 +4,6 @@ import 'half_year.dart' as halfyear;
 
 var currentDate = new DateTime.now();
 String finalMarks = "0";
-String shirt, pant, belt, shoe, other;
 
 class Uniform extends StatefulWidget {
   final String name, group, id;
@@ -20,6 +19,7 @@ class _UniformState extends State<Uniform> {
   var now = new DateTime.now();
 
   // String shoe, pant, shirt, skirt, tye;
+  String shirt, pant, belt, shoe, other;
 
   @override
   Widget build(BuildContext context) {
