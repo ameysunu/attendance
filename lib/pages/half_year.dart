@@ -24,7 +24,7 @@ class _HalfYearState extends State<HalfYear> {
           .snapshots();
     } else if (groupvalue == 'JS') {
       newStream = FirebaseFirestore.instance
-          .collection('js')
+          .collection('dayjs')
           .orderBy('group')
           .snapshots();
     }
@@ -55,7 +55,7 @@ class _HalfYearState extends State<HalfYear> {
                         .snapshots();
                   } else if (groupvalue == 'JS') {
                     newStream = FirebaseFirestore.instance
-                        .collection('js')
+                        .collection('dayjs')
                         .orderBy('group')
                         .snapshots();
                   }

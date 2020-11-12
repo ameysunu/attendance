@@ -1,7 +1,5 @@
-import 'package:boysbrigade/pages/update.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
-import 'uniform.dart';
 import 'half_year.dart' as halfyear;
 
 class Day extends StatefulWidget {
