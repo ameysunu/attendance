@@ -292,15 +292,15 @@ class _UniformState extends State<Uniform> {
                       onPressed: () {
                         setState(() {});
 
+                        // FirebaseFirestore.instance
+                        //     .collection("uniform")
+                        //     .doc(widget.id)
+                        //     .set({
+                        //   "name": widget.name,
+                        //   "group": widget.group,
+                        // });
                         FirebaseFirestore.instance
-                            .collection("uniform")
-                            .doc(widget.id)
-                            .set({
-                          "name": widget.name,
-                          "group": widget.group,
-                        });
-                        FirebaseFirestore.instance
-                            .collection("student")
+                            .collection("CS")
                             .doc(widget.id)
                             .collection("marks")
                             .add({
@@ -558,16 +558,16 @@ class _UniformState extends State<Uniform> {
                           EdgeInsets.symmetric(vertical: 8, horizontal: 120),
                       onPressed: () {
                         setState(() {});
-                        FirebaseFirestore.instance
-                            .collection('uniformjs')
-                            .doc(widget.id)
-                            .set({
-                          "name": widget.name,
-                          "group": widget.group,
-                        });
+                        // FirebaseFirestore.instance
+                        //     .collection('uniformjs')
+                        //     .doc(widget.id)
+                        //     .set({
+                        //   "name": widget.name,
+                        //   "group": widget.group,
+                        // });
 
                         FirebaseFirestore.instance
-                            .collection("attendancejs")
+                            .collection("JS")
                             .doc(widget.id)
                             .collection("marks")
                             .add({

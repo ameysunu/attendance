@@ -32,12 +32,12 @@ class _AttendanceState extends State<Attendance> {
     super.initState();
     if (halfyear.groupvalue == 'CS') {
       halfyear.newStream = FirebaseFirestore.instance
-          .collection('student')
+          .collection('day')
           .orderBy('group')
           .snapshots();
     } else if (halfyear.groupvalue == 'JS') {
       halfyear.newStream = FirebaseFirestore.instance
-          .collection('attendancejs')
+          .collection('dayjs')
           .orderBy('group')
           .snapshots();
     }
@@ -165,16 +165,16 @@ class AttendanceTile extends StatefulWidget {
 
 class _AttendanceTileState extends State<AttendanceTile> {
   List<String> attendance = ['出席', '遲到', '請假', '缺席'];
-  void add() {
-    FirebaseFirestore.instance
-        .collection("student")
-        .doc(widget.id)
-        .collection("attendance")
-        .add({
-      'date': "${now.day}/${now.month}/${now.year}",
-      'studentAttendance': dropdownValue,
-    });
-  }
+  // void add() {
+  //   FirebaseFirestore.instance
+  //       .collection("student")
+  //       .doc(widget.id)
+  //       .collection("attendance")
+  //       .add({
+  //     'date': "${now.day}/${now.month}/${now.year}",
+  //     'studentAttendance': dropdownValue,
+  //   });
+  // }
 
   String dropdownValue;
   var now = new DateTime.now();
@@ -260,12 +260,12 @@ class _AttendanceTileState extends State<AttendanceTile> {
                         FirebaseFirestore.instance.doc("data/${widget.id}");
                     subscription =
                         documentReference.snapshots().listen((datasnapshot) {
-                      print(datasnapshot.data()['date']);
+                      print(documentReference);
                       if (datasnapshot.data()['date'] !=
                           "${now.day}/${now.month}/${now.year}") {
                         print("need to add");
                         FirebaseFirestore.instance
-                            .collection("student")
+                            .collection("CS")
                             .doc(widget.id)
                             .collection("attendance")
                             .add({
@@ -281,6 +281,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                           'group': widget.group,
                           "status": dropdownValue,
                           "totalMark": "0",
+                          "id": widget.id,
                           "date": "${now.day}/${now.month}/${now.year}",
                         });
                         //check DB
@@ -328,7 +329,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                           "${now.day}/${now.month}/${now.year}") {
                         print("need to add");
                         FirebaseFirestore.instance
-                            .collection("attendancejs")
+                            .collection("JS")
                             .doc(widget.id)
                             .collection("attendance")
                             .add({
@@ -343,6 +344,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                           'name': widget.name,
                           'group': widget.group,
                           "status": dropdownValue,
+                          "id": widget.id,
                           "totalMark": "0",
                           "date": "${now.day}/${now.month}/${now.year}",
                         });
