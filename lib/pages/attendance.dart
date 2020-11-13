@@ -48,37 +48,40 @@ class _AttendanceState extends State<Attendance> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(80.0),
+        preferredSize: Size.fromHeight(80),
         child: AppBar(
           centerTitle: true,
           backgroundColor: Colors.white,
           automaticallyImplyLeading: false,
-          title: Column(
-            children: [
-              Padding(
-                padding: const EdgeInsets.only(top: 20.0),
-                child: Text(
-                  '出席率',
-                  style: TextStyle(
-                    color: Colors.black,
-                    fontWeight: FontWeight.normal,
-                  ),
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 15.0, top: 5.0),
-                child: Container(
+          title: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(top: 20.0),
                   child: Text(
-                    "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+                    '出席率',
                     style: TextStyle(
-                        color: Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.normal,
-                        fontFamily: 'OpenSans SemiBold'),
+                      color: Colors.black,
+                      fontWeight: FontWeight.normal,
+                    ),
                   ),
                 ),
-              )
-            ],
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 15.0),
+                  child: Container(
+                    child: Text(
+                      "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+                      style: TextStyle(
+                          color: Colors.black,
+                          fontSize: 20,
+                          fontWeight: FontWeight.normal,
+                          fontFamily: 'OpenSans SemiBold'),
+                    ),
+                  ),
+                )
+              ],
+            ),
           ),
           elevation: 0,
         ),

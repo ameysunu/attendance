@@ -16,14 +16,24 @@ class _SettingsState extends State<Settings> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
-      appBar: AppBar(
-        centerTitle: true,
-        elevation: 0,
-        automaticallyImplyLeading: false,
-        backgroundColor: Colors.white,
-        title: Text(
-          "設定",
-          style: TextStyle(color: Colors.black),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70),
+        child: AppBar(
+          centerTitle: true,
+          elevation: 0,
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          title: Column(
+            children: [
+              Padding(
+                padding: const EdgeInsets.only(top: 10.0),
+                child: Text(
+                  "設定",
+                  style: TextStyle(color: Colors.black),
+                ),
+              ),
+            ],
+          ),
         ),
       ),
       body: Column(
