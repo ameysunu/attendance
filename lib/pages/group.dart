@@ -43,7 +43,7 @@ class _GroupState extends State<Group> {
                 Row(
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.17,
+                      width: MediaQuery.of(context).size.width * 0.05,
                       child: Center(child: Text("1")),
                     ),
                     Container(
@@ -52,7 +52,7 @@ class _GroupState extends State<Group> {
                           Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: Container(
-                              width: MediaQuery.of(context).size.width * 0.7,
+                              width: MediaQuery.of(context).size.width * 0.9,
                               child: Card(
                                 color: Colors.blueGrey[900],
                                 child: Row(
@@ -75,6 +75,7 @@ class _GroupState extends State<Group> {
                                             style: TextStyle(
                                               fontFamily: 'OpenSans Regular',
                                               color: Colors.white,
+                                              fontSize: 12,
                                             ),
                                           ),
                                           Text(
@@ -82,7 +83,7 @@ class _GroupState extends State<Group> {
                                             style: TextStyle(
                                                 fontFamily: 'OpenSans Regular',
                                                 color: Colors.white,
-                                                fontSize: 20),
+                                                fontSize: 18),
                                           )
                                         ],
                                       ),
@@ -95,6 +96,7 @@ class _GroupState extends State<Group> {
                                             style: TextStyle(
                                               fontFamily: 'OpenSans Regular',
                                               color: Colors.white,
+                                              fontSize: 12,
                                             ),
                                           ),
                                           Text(
@@ -102,7 +104,7 @@ class _GroupState extends State<Group> {
                                             style: TextStyle(
                                                 fontFamily: 'OpenSans Regular',
                                                 color: Colors.white,
-                                                fontSize: 20),
+                                                fontSize: 18),
                                           )
                                         ],
                                       ),
