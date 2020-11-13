@@ -103,7 +103,7 @@ class _HalfYearState extends State<HalfYear> {
                   childAspectRatio: _aspectRatio),
               itemBuilder: (context, int index) => InkWell(
                 child: Container(
-                  height: 280.0,
+                  height: 290.0,
                   padding: EdgeInsets.fromLTRB(10, 30, 10, 30),
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
