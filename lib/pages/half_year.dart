@@ -37,52 +37,55 @@ class _HalfYearState extends State<HalfYear> {
     var _aspectRatio = _width / 250;
 
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        actions: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(right: 20.0),
-            child: DropdownButton<String>(
-              value: groupvalue,
-              onChanged: (String newValue) {
-                setState(() {
-                  groupvalue = newValue;
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(70.0),
+        child: AppBar(
+          centerTitle: true,
+          actions: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(right: 20.0),
+              child: DropdownButton<String>(
+                value: groupvalue,
+                onChanged: (String newValue) {
+                  setState(() {
+                    groupvalue = newValue;
 
-                  if (groupvalue == 'CS') {
-                    print('CS');
-                    newStream = FirebaseFirestore.instance
-                        .collection('day')
-                        .orderBy('group')
-                        .snapshots();
-                  } else if (groupvalue == 'JS') {
-                    newStream = FirebaseFirestore.instance
-                        .collection('dayjs')
-                        .orderBy('group')
-                        .snapshots();
-                  }
-                });
-              },
-              items: <String>['CS', 'JS']
-                  .map<DropdownMenuItem<String>>((String value) {
-                return DropdownMenuItem<String>(
-                  value: value,
-                  child: Text(value),
-                );
-              }).toList(),
+                    if (groupvalue == 'CS') {
+                      print('CS');
+                      newStream = FirebaseFirestore.instance
+                          .collection('day')
+                          .orderBy('group')
+                          .snapshots();
+                    } else if (groupvalue == 'JS') {
+                      newStream = FirebaseFirestore.instance
+                          .collection('dayjs')
+                          .orderBy('group')
+                          .snapshots();
+                    }
+                  });
+                },
+                items: <String>['CS', 'JS']
+                    .map<DropdownMenuItem<String>>((String value) {
+                  return DropdownMenuItem<String>(
+                    value: value,
+                    child: Text(value),
+                  );
+                }).toList(),
+              ),
+            ),
+          ],
+          automaticallyImplyLeading: false,
+          title: Text(
+            '上半年', //half year
+            style: TextStyle(
+              color: Colors.black,
+              fontWeight: FontWeight.normal,
+              fontSize: 20,
             ),
           ),
-        ],
-        automaticallyImplyLeading: false,
-        title: Text(
-          '上半年', //half year
-          style: TextStyle(
-            color: Colors.black,
-            fontWeight: FontWeight.normal,
-            fontSize: 20,
-          ),
+          elevation: 0,
+          backgroundColor: Colors.white,
         ),
-        elevation: 0,
-        backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.blueGrey[50],
       body: StreamBuilder(
@@ -118,7 +121,7 @@ class _HalfYearState extends State<HalfYear> {
                         ),
                       ),
                       SizedBox(
-                        height: 30,
+                        height: 20,
                       ),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
