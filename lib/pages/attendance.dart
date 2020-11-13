@@ -48,7 +48,7 @@ class _AttendanceState extends State<Attendance> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(70.0),
+        preferredSize: Size.fromHeight(77.0),
         child: AppBar(
           centerTitle: true,
           backgroundColor: Colors.white,
