@@ -38,6 +38,7 @@ class _HalfYearState extends State<HalfYear> {
 
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         actions: <Widget>[
           Padding(
             padding: const EdgeInsets.only(right: 20.0),
@@ -77,11 +78,11 @@ class _HalfYearState extends State<HalfYear> {
           style: TextStyle(
             color: Colors.black,
             fontWeight: FontWeight.normal,
-            fontSize: 25,
+            fontSize: 20,
           ),
         ),
         elevation: 0,
-        backgroundColor: Colors.blueGrey[50],
+        backgroundColor: Colors.white,
       ),
       backgroundColor: Colors.blueGrey[50],
       body: StreamBuilder(
@@ -153,7 +154,7 @@ class _HalfYearState extends State<HalfYear> {
                             '13%',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 25,
+                              fontSize: 20,
                             ),
                           ),
                           SizedBox(
@@ -163,7 +164,7 @@ class _HalfYearState extends State<HalfYear> {
                             '40%',
                             style: TextStyle(
                               color: Colors.black,
-                              fontSize: 25,
+                              fontSize: 20,
                             ),
                           ),
                         ],
