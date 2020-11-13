@@ -48,7 +48,7 @@ class _AttendanceState extends State<Attendance> {
     return Scaffold(
       backgroundColor: Colors.blueGrey[50],
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(77.0),
+        preferredSize: Size.fromHeight(80.0),
         child: AppBar(
           centerTitle: true,
           backgroundColor: Colors.white,
@@ -66,13 +66,16 @@ class _AttendanceState extends State<Attendance> {
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(bottom: 10.0),
-                child: Text(
-                  "${currentDate.day}/${currentDate.month}/${currentDate.year}",
-                  style: TextStyle(
-                      color: Colors.black,
-                      fontWeight: FontWeight.normal,
-                      fontFamily: 'OpenSans SemiBold'),
+                padding: const EdgeInsets.only(bottom: 15.0, top: 5.0),
+                child: Container(
+                  child: Text(
+                    "${currentDate.day}/${currentDate.month}/${currentDate.year}",
+                    style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.normal,
+                        fontFamily: 'OpenSans SemiBold'),
+                  ),
                 ),
               )
             ],

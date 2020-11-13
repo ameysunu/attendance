@@ -110,16 +110,19 @@ class _AccountState extends State<Account> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        iconTheme: IconThemeData(
-          color: Colors.black,
-        ),
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: Colors.white,
-        title: Text(
-          '帳戶',
-          style: TextStyle(color: Colors.black),
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(77.0),
+        child: AppBar(
+          iconTheme: IconThemeData(
+            color: Colors.black,
+          ),
+          elevation: 0,
+          centerTitle: true,
+          backgroundColor: Colors.white,
+          title: Text(
+            '帳戶',
+            style: TextStyle(color: Colors.black),
+          ),
         ),
       ),
       body: Column(
