@@ -43,7 +43,7 @@ class _GroupState extends State<Group> {
                 Row(
                   children: [
                     Container(
-                      width: MediaQuery.of(context).size.width * 0.2,
+                      width: MediaQuery.of(context).size.width * 0.17,
                       child: Center(child: Text("1")),
                     ),
                     Container(
