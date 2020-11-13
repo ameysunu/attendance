@@ -67,11 +67,12 @@ class _UniformState extends State<Uniform> {
                   ),
                 ),
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 10.0),
+                  padding: const EdgeInsets.only(bottom: 12.0),
                   child: Text(
                     "${currentDate.day}/${currentDate.month}/${currentDate.year}",
                     style: TextStyle(
                         color: Colors.black,
+                        fontSize: 15,
                         fontWeight: FontWeight.normal,
                         fontFamily: 'OpenSans SemiBold'),
                   ),

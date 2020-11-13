@@ -1,4 +1,3 @@
-import 'package:boysbrigade/pages/home.dart';
 import 'package:boysbrigade/pages/loading.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
