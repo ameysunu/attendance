@@ -15,20 +15,8 @@ class _LoadingState extends State<Loading> {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
-            Image.asset(
-              'assets/logo.png',
-              height: 200,
-            ),
             Text(
               '香港基督少年軍第78分隊',
-              style: TextStyle(
-                fontSize: 25,
-                color: Colors.black,
-                fontFamily: 'OpenSans',
-              ),
-            ),
-            Text(
-              '謝佩妏',
               style: TextStyle(
                 fontSize: 25,
                 color: Colors.black,
