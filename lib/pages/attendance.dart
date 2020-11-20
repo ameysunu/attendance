@@ -171,17 +171,6 @@ class AttendanceTile extends StatefulWidget {
 
 class _AttendanceTileState extends State<AttendanceTile> {
   List<String> attendance = ['出席', '遲到', '請假', '缺席'];
-  // void add() {
-  //   FirebaseFirestore.instance
-  //       .collection("student")
-  //       .doc(widget.id)
-  //       .collection("attendance")
-  //       .add({
-  //     'date': "${now.day}/${now.month}/${now.year}",
-  //     'studentAttendance': dropdownValue,
-  //   });
-  // }
-
   String dropdownValue;
   var now = new DateTime.now();
 
@@ -276,6 +265,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                             .collection("attendance")
                             .add({
                           'date': "${now.day}/${now.month}/${now.year}",
+                          'id': widget.id,
                           'studentAttendance': dropdownValue,
                         });
                         //  for day
@@ -297,6 +287,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                             .set({
                           'name': widget.name,
                           'group': widget.group,
+                          'id': widget.id,
                           "status": dropdownValue,
                           "date": "${now.day}/${now.month}/${now.year}",
                         });
@@ -340,6 +331,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                             .collection("attendance")
                             .add({
                           'date': "${now.day}/${now.month}/${now.year}",
+                          'id': widget.id,
                           'studentAttendance': dropdownValue,
                         });
                         //  for day
@@ -361,6 +353,7 @@ class _AttendanceTileState extends State<AttendanceTile> {
                             .set({
                           'name': widget.name,
                           'group': widget.group,
+                          'id': widget.id,
                           "status": dropdownValue,
                           "date": "${now.day}/${now.month}/${now.year}",
                         });
