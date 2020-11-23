@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'half_year.dart' as halfyear;
+import 'attendance.dart' as att;
 
 var currentDate = new DateTime.now();
 String finalMarks = "0";
@@ -300,29 +301,53 @@ class _UniformState extends State<Uniform> {
                         //   "name": widget.name,
                         //   "group": widget.group,
                         // });
-                        FirebaseFirestore.instance
-                            .collection("CS")
-                            .doc(widget.id)
-                            .collection("marks")
-                            .add({
-                          'Date': "${now.day}/${now.month}/${now.year}",
-                          'Shirt': shirt,
-                          'Pant': pant,
-                          'Belt': belt,
-                          'Shoe': shoe,
-                          'Other': other,
-                        });
+                        if (att.dropdownValue == '請假' ||
+                            att.dropdownValue == '缺席') {
+                          FirebaseFirestore.instance
+                              .collection("CS")
+                              .doc(widget.id)
+                              .collection("marks")
+                              .add({
+                            'Date': "${now.day}/${now.month}/${now.year}",
+                            'Shirt': "0",
+                            'Pant': "0",
+                            'Belt': "0",
+                            'Shoe': "0",
+                            'Other': "0",
+                          });
 
-                        calcCS();
+                          FirebaseFirestore.instance
+                              .collection("day")
+                              .doc(widget.id)
+                              .update({
+                            'totalMark': "0",
+                          });
+                          Navigator.pop(context);
+                        } else {
+                          FirebaseFirestore.instance
+                              .collection("CS")
+                              .doc(widget.id)
+                              .collection("marks")
+                              .add({
+                            'Date': "${now.day}/${now.month}/${now.year}",
+                            'Shirt': shirt,
+                            'Pant': pant,
+                            'Belt': belt,
+                            'Shoe': shoe,
+                            'Other': other,
+                          });
 
-                        FirebaseFirestore.instance
-                            .collection("day")
-                            .doc(widget.id)
-                            .update({
-                          'totalMark': finalMarks,
-                        });
+                          calcCS();
 
-                        Navigator.pop(context);
+                          FirebaseFirestore.instance
+                              .collection("day")
+                              .doc(widget.id)
+                              .update({
+                            'totalMark': finalMarks,
+                          });
+
+                          Navigator.pop(context);
+                        }
                       },
                       child: Text(
                         '提交',
@@ -566,29 +591,52 @@ class _UniformState extends State<Uniform> {
                         //   "name": widget.name,
                         //   "group": widget.group,
                         // });
+                        if (att.dropdownValue == '請假' ||
+                            att.dropdownValue == '缺席') {
+                          FirebaseFirestore.instance
+                              .collection("JS")
+                              .doc(widget.id)
+                              .collection("marks")
+                              .add({
+                            'Date': "${now.day}/${now.month}/${now.year}",
+                            'Shirt': '0',
+                            'Pant': '0',
+                            'Belt': '0',
+                            'Shoe': '0',
+                            'Other': '0',
+                          });
 
-                        FirebaseFirestore.instance
-                            .collection("JS")
-                            .doc(widget.id)
-                            .collection("marks")
-                            .add({
-                          'Date': "${now.day}/${now.month}/${now.year}",
-                          'Shirt': shirt,
-                          'Pant': pant,
-                          'Shoe': shoe,
-                          'Other': other,
-                        });
+                          FirebaseFirestore.instance
+                              .collection("dayjs")
+                              .doc(widget.id)
+                              .update({
+                            'totalMark': '0',
+                          });
+                          Navigator.pop(context);
+                        } else {
+                          FirebaseFirestore.instance
+                              .collection("JS")
+                              .doc(widget.id)
+                              .collection("marks")
+                              .add({
+                            'Date': "${now.day}/${now.month}/${now.year}",
+                            'Shirt': shirt,
+                            'Pant': pant,
+                            'Shoe': shoe,
+                            'Other': other,
+                          });
 
-                        calcJS();
+                          calcJS();
 
-                        FirebaseFirestore.instance
-                            .collection("dayjs")
-                            .doc(widget.id)
-                            .update({
-                          'totalMark': finalMarks,
-                        });
+                          FirebaseFirestore.instance
+                              .collection("dayjs")
+                              .doc(widget.id)
+                              .update({
+                            'totalMark': finalMarks,
+                          });
 
-                        Navigator.pop(context);
+                          Navigator.pop(context);
+                        }
                       },
                       child: Text(
                         '提交',

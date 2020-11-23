@@ -169,9 +169,11 @@ class AttendanceTile extends StatefulWidget {
   _AttendanceTileState createState() => _AttendanceTileState();
 }
 
+String dropdownValue;
+
 class _AttendanceTileState extends State<AttendanceTile> {
   List<String> attendance = ['出席', '遲到', '請假', '缺席'];
-  String dropdownValue;
+
   var now = new DateTime.now();
 
   @override
@@ -377,17 +379,4 @@ class _AttendanceTileState extends State<AttendanceTile> {
       ),
     );
   }
-}
-
-void _errorAlert(BuildContext context) {
-  showDialog(
-      context: context,
-      builder: (context) {
-        return AlertDialog(
-          title: Text(
-            "Oops, you have filled in attendance for today!",
-            style: TextStyle(fontFamily: 'OpenSans SemiBold'),
-          ),
-        );
-      });
 }
