@@ -301,7 +301,8 @@ class _UniformState extends State<Uniform> {
                         //   "name": widget.name,
                         //   "group": widget.group,
                         // });
-                        if (att.dropVal == '請假' || att.dropVal == '缺席') {
+                        if (att.dropdownValue == '請假' ||
+                            att.dropdownValue == '缺席') {
                           FirebaseFirestore.instance
                               .collection("CS")
                               .doc(widget.id)
@@ -590,7 +591,8 @@ class _UniformState extends State<Uniform> {
                         //   "name": widget.name,
                         //   "group": widget.group,
                         // });
-                        if (att.dropVal == '請假' || att.dropVal == '缺席') {
+                        if (att.dropdownValue == '請假' ||
+                            att.dropdownValue == '缺席') {
                           FirebaseFirestore.instance
                               .collection("JS")
                               .doc(widget.id)
