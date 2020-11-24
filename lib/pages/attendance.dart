@@ -169,11 +169,11 @@ class AttendanceTile extends StatefulWidget {
   _AttendanceTileState createState() => _AttendanceTileState();
 }
 
-String dropdownValue;
+String dropVal = _AttendanceTileState().dropdownValue;
 
 class _AttendanceTileState extends State<AttendanceTile> {
   List<String> attendance = ['出席', '遲到', '請假', '缺席'];
-
+  String dropdownValue;
   var now = new DateTime.now();
 
   @override
