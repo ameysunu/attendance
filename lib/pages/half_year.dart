@@ -137,7 +137,7 @@ class _HalfYearState extends State<HalfYear> {
                             width: 5,
                           ),
                           Text(
-                            '5',
+                            groupUsers.length.toString(),
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
