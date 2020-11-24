@@ -114,7 +114,7 @@ class _HalfYearState extends State<HalfYear> {
                       Text(
                         groupUsers[index].data()['group'],
                         style: TextStyle(
-                          color: Colors.indigo[900],
+                          color: Colors.blueGrey[900],
                           fontSize: 35,
                           fontFamily: "OpenSans Regular",
                           fontWeight: FontWeight.w600,
@@ -127,34 +127,7 @@ class _HalfYearState extends State<HalfYear> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
                           Text(
-                            '出席率',
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontFamily: "OpenSans Regular",
-                              fontWeight: FontWeight.w600,
-                            ),
-                          ),
-                          SizedBox(
-                            width: 15,
-                            height: 40,
-                          ),
-                          Text(
-                            '制服', //uniform
-                            style: TextStyle(
-                              color: Colors.black,
-                              fontSize: 15,
-                              fontWeight: FontWeight.w600,
-                              fontFamily: "OpenSans Regular",
-                            ),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            '13%',
+                            '人數:',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
@@ -164,7 +137,7 @@ class _HalfYearState extends State<HalfYear> {
                             width: 5,
                           ),
                           Text(
-                            '40%',
+                            '5',
                             style: TextStyle(
                               color: Colors.black,
                               fontSize: 20,
