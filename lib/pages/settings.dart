@@ -54,7 +54,6 @@ class _SettingsState extends State<Settings> {
                         "帳戶",
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -85,7 +84,6 @@ class _SettingsState extends State<Settings> {
                         "關於",
                         style: TextStyle(
                           fontSize: 20,
-                          fontWeight: FontWeight.bold,
                         ),
                       ),
                     ),
@@ -153,9 +151,10 @@ class _AccountState extends State<Account> {
                   Padding(
                     padding: const EdgeInsets.only(left: 8.0),
                     child: Card(
+                      elevation: 0,
                       color: Colors.blueGrey[50],
                       shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15.0),
+                        borderRadius: BorderRadius.circular(20.0),
                       ),
                       child: Row(
                         children: [
@@ -164,7 +163,8 @@ class _AccountState extends State<Account> {
                                 const EdgeInsets.fromLTRB(20.0, 10, 10, 10),
                             child: Text(
                               email,
-                              style: TextStyle(fontSize: 18),
+                              style: TextStyle(
+                                  fontSize: 18, color: Colors.blueGrey[900]),
                             ),
                           )
                         ],
@@ -179,7 +179,7 @@ class _AccountState extends State<Account> {
             child: Align(
               alignment: FractionalOffset.bottomCenter,
               child: Padding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.fromLTRB(10.0, 10, 10, 20),
                 child: RaisedButton(
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
@@ -196,7 +196,7 @@ class _AccountState extends State<Account> {
                   child: Text(
                     '登出',
                     style: TextStyle(
-                      fontSize: 20,
+                      fontSize: 17,
                     ),
                   ),
                 ),
