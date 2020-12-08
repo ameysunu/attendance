@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'uniform.dart';
 import 'day.dart';
 import 'half_year.dart' as halfyear;
+import '../model/model.dart' as model;
 
 final firestoreInstance = FirebaseFirestore.instance;
 var currentDate = new DateTime.now();
@@ -162,8 +163,11 @@ class _AttendanceState extends State<Attendance> {
 
 class AttendanceTile extends StatefulWidget {
   final String name, group, id;
+  final model.Attendance newVal;
 
-  AttendanceTile({Key key, this.name, this.group, this.id}) : super(key: key);
+  AttendanceTile(
+      {Key key, this.name, this.group, this.id, @required this.newVal})
+      : super(key: key);
 
   @override
   _AttendanceTileState createState() => _AttendanceTileState();
@@ -295,6 +299,16 @@ class _AttendanceTileState extends State<AttendanceTile> {
                         });
                       } else if (datasnapshot.data()['date'] ==
                           "${now.day}/${now.month}/${now.year}") {
+                        FirebaseFirestore.instance
+                            .collection("CS")
+                            .doc(widget.id)
+                            .collection("attendance")
+                            .doc(widget.newVal.studentID)
+                            .update({
+                          'date': "${now.day}/${now.month}/${now.year}",
+                          'id': widget.id,
+                          'studentAttendance': dropdownValue,
+                        });
                         print("error");
                       }
                     });

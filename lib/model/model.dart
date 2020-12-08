@@ -1,16 +1,14 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class Attendance {
-  final String id;
-  final String newID;
+  final String studentID;
   final String status;
   final Timestamp createdAt;
 
-  Attendance(this.id, this.status, this.newID, this.createdAt);
+  Attendance(this.status, this.studentID, this.createdAt);
 
   Attendance.fromFirestore(DocumentSnapshot document)
-      : id = document.id,
-        newID = document.id,
+      : studentID = document.id,
         status = document.data()['status'],
         createdAt = document.data()['createdAt'];
 }
